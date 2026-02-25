@@ -17,6 +17,23 @@ export const AppProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [busy, setBusy] = useState(false);
+    const [docFields, setDocFields] = useState(() => {
+        try {
+            const raw = localStorage.getItem('docFields');
+            return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+            return {};
+        }
+    });
+
+    // Persist docFields to localStorage so users don't re-enter values each session
+    useEffect(() => {
+        try {
+            localStorage.setItem('docFields', JSON.stringify(docFields));
+        } catch (e) {
+            // ignore storage errors
+        }
+    }, [docFields]);
 
     // Initial load: check localStorage for session
     useEffect(() => {
@@ -69,6 +86,7 @@ export const AppProvider = ({ children }) => {
                 tasks, setTasks,
                 userId, setUserId,
                 token, isAuthenticated,
+                docFields, setDocFields,
                 login, logout,
                 busy, setBusy,
                 navigate,

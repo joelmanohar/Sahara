@@ -68,9 +68,24 @@ async function ingest() {
     const d = 1536; // OpenAI text-embedding-3-small dimension
     const index = new faiss.IndexFlatL2(d);
 
-    for (let i = 0; i < vectors.length; i++) {
-        index.add([vectors[i]]);
+    // faiss-node Index.add expects a flat JS array of length n * d.
+    const n = vectors.length;
+    const flat = new Array(n * d);
+    for (let i = 0; i < n; i++) {
+        const v = vectors[i];
+        const arr = Array.isArray(v) ? v : Array.from(v);
+        if (arr.length !== d) {
+            throw new Error(`Invalid vector length ${arr.length} (expected ${d}) for chunk ${i}`);
+        }
+        for (let j = 0; j < d; j++) {
+            flat[i * d + j] = arr[j];
+        }
     }
+
+    // debug: verify lengths
+    console.log('faiss ingest: adding', n, 'vectors. expected dim:', d);
+    console.log('faiss ingest: flat length:', flat.length);
+    index.add(flat);
 
     index.write(path.join(indexDir, 'faiss.index'));
     fs.writeFileSync(path.join(indexDir, 'chunks.json'), JSON.stringify(allChunks, null, 2));

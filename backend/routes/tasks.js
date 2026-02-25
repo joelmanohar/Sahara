@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const initialTasks = [
-    { icon: '🏦', category: 'bank', name: 'SBI Savings Account', sub: 'Documents ready · Visit branch', status: 'progress', updatedAt: new Date() },
     { icon: '🛡', category: 'insurance', name: 'LIC Policy Claim', sub: 'Submitted · Awaiting response', status: 'submitted', updatedAt: new Date() },
     { icon: '📧', category: 'digital', name: 'Gmail Account', sub: 'Memorialization complete', status: 'done', updatedAt: new Date() },
     { icon: '📊', category: 'pension', name: 'EPF / PF Claim', sub: 'Form 10D download pending', status: 'pending', updatedAt: new Date() },

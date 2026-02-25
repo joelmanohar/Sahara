@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { ArrowLeft } from 'lucide-react';
 import DocCard from '../components/DocCard';
@@ -6,56 +6,61 @@ import { generateDoc } from '../services/docgen';
 import { generateDocument, updateTask } from '../services/api';
 
 const Documents = () => {
-    const { navigate, userName, relationship, state, tasks, setTasks, userId } = useContext(AppContext);
+    const { navigate, userName, relationship, state: userState, tasks, setTasks, userId, docFields, setDocFields } = useContext(AppContext);
 
-    // We build a payload dynamically when generating documents so templates can
-    // be filled with extra fields (deceased name, IDs).
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedType, setSelectedType] = useState(null);
+    const [fields, setFields] = useState({});
+    const [showPreview, setShowPreview] = useState(false);
+    const [errors, setErrors] = useState({});
 
-    const handleGenerate = async (type) => {
-        // Collect minimal required fields for certain document types so templates
-        // can be filled. Use simple prompts for now; later we can replace with
-        // a modal form for better UX.
-        const extra = {};
-        if (type === 'transmission') {
-            extra.deceasedName = window.prompt('Deceased name (for Demat transmission):', '') || '';
-            extra.dematAccountNo = window.prompt('Demat account number:', '') || '';
-        } else if (type === 'lic') {
-            extra.deceasedName = window.prompt('Deceased name (for LIC claim):', '') || '';
-            extra.policyNumber = window.prompt('Policy number:', '') || '';
-        } else if (type === 'epf') {
-            extra.deceasedName = window.prompt('Deceased name (for EPF):', '') || '';
-            extra.UAN = window.prompt('UAN number:', '') || '';
-        } else if (type === 'account_closure' || type === 'sbi') {
-            extra.deceasedName = window.prompt('Deceased name (for account closure):', '') || '';
-            extra.accountNumber = window.prompt('Account number:', '') || '';
-            extra.IFSC = window.prompt('IFSC (optional):', '') || '';
-            extra.bankName = window.prompt('Bank / Branch name (optional):', '') || '';
-        }
+    const openModal = (type) => {
+        setSelectedType(type);
+        // Prefill from context if available
+        setFields({ ...(docFields[type] || {}), deceasedName: (docFields[type] && docFields[type].deceasedName) || '' });
+        setModalOpen(true);
+    };
 
-        const payload = { userName, relationship, state: state || 'Maharashtra', ...extra };
+    const closeModal = () => {
+        setModalOpen(false);
+        setSelectedType(null);
+    };
+
+    const handleSubmit = async () => {
+        // Basic validation
+        const errs = {};
+        if (!fields.deceasedName || fields.deceasedName.trim().length < 2) errs.deceasedName = 'Required';
+        if ((selectedType === 'transmission') && (!fields.dematAccountNo || fields.dematAccountNo.trim().length < 6)) errs.dematAccountNo = 'Enter valid demat account number';
+        if ((selectedType === 'lic') && (!fields.policyNumber || fields.policyNumber.trim().length < 4)) errs.policyNumber = 'Required';
+        if ((selectedType === 'epf') && (!fields.UAN || fields.UAN.trim().length < 6)) errs.UAN = 'Required';
+        if ((selectedType === 'account_closure' || selectedType === 'sbi') && (!fields.accountNumber || fields.accountNumber.trim().length < 6)) errs.accountNumber = 'Required';
+        setErrors(errs);
+        if (Object.keys(errs).length > 0) return;
+
+    const payload = { userName, relationship, state: userState || 'Maharashtra', ...fields };
+
+        // save to session context for reuse
+        setDocFields(prev => ({ ...prev, [selectedType]: fields }));
 
         try {
-            // Try backend generation first (safer for larger templates)
-            const resp = await generateDocument(type, payload);
-            // download blob
+            const resp = await generateDocument(selectedType, payload);
             const url = window.URL.createObjectURL(new Blob([resp.data]));
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${type.toUpperCase()}_Sahara.docx`;
+            a.download = `${selectedType.toUpperCase()}_Sahara.docx`;
             document.body.appendChild(a);
             a.click();
             a.remove();
             window.URL.revokeObjectURL(url);
         } catch (err) {
-            // Fallback to client-side generation
             try {
-                await generateDoc(type, payload);
+                await generateDoc(selectedType, payload);
             } catch (e) {
                 console.error('Document generation failed', e);
             }
         }
 
-        // Mark task done if matching task exists (simple substring match)
+        // update task status if exists
         try {
             if (!userId) return;
             const map = {
@@ -65,8 +70,8 @@ const Documents = () => {
                 account_closure: 'Account',
                 transmission: 'Demat'
             };
-            const needle = map[type] || '';
-            const idx = tasks.findIndex(t => (t.name && t.name.includes(needle)) || (t.category && t.category === type));
+            const needle = map[selectedType] || '';
+            const idx = tasks.findIndex(t => (t.name && t.name.includes(needle)) || (t.category && t.category === selectedType));
             if (idx >= 0) {
                 const res = await updateTask(userId, idx, 'done');
                 if (res && res.data) setTasks(res.data);
@@ -74,6 +79,54 @@ const Documents = () => {
         } catch (err) {
             console.error('Failed to update task status', err);
         }
+
+        closeModal();
+    };
+
+    const renderPreview = (type, data) => {
+        // Lightweight HTML preview renderer that mirrors template text
+    const { userName, relationship, deceasedName, accountNumber, dematAccountNo, policyNumber, UAN, IFSC, bankName } = data;
+        if (type === 'transmission') {
+            return (
+                <div>
+                    <div><strong>Demat Transmission Request</strong></div>
+                    <div style={{ marginTop: 8 }}>To, The Depository Participant / Broker</div>
+                    <div style={{ marginTop: 8 }}>Date: {new Date().toLocaleDateString('en-IN')}</div>
+                    <div style={{ marginTop: 8 }}>Subject: Transmission of securities on account of death of the holder</div>
+                    <div style={{ marginTop: 8 }}>I, {userName}, am the {relationship} of the deceased {deceasedName || '[Deceased Name]'}, holding Demat Account No: {dematAccountNo || '[Demat Account No]'}.</div>
+                </div>
+            );
+        }
+        if (type === 'lic') {
+            return (
+                <div>
+                    <div><strong>LIC Policy Death Claim</strong></div>
+                    <div style={{ marginTop: 8 }}>Policy Number: {policyNumber || '[Policy Number]'}</div>
+                    <div style={{ marginTop: 8 }}>I, {userName}, am the {relationship} of the policyholder late {deceasedName || '[Deceased Name]'}. Please process the claim.</div>
+                </div>
+            );
+        }
+        if (type === 'epf') {
+            return (
+                <div>
+                    <div><strong>EPF Form 10D Cover Letter</strong></div>
+                    <div style={{ marginTop: 8 }}>UAN: {UAN || '[UAN]'}</div>
+                    <div style={{ marginTop: 8 }}>I, {userName}, am submitting this as the {relationship} of late {deceasedName || '[Deceased Name]'}. Please find enclosed Form 10D.</div>
+                </div>
+            );
+        }
+        if (type === 'account_closure' || type === 'sbi') {
+            return (
+                <div>
+                    <div><strong>Account Closure Request</strong></div>
+                    <div style={{ marginTop: 8 }}>Account Number: {accountNumber || '[Account Number]'}</div>
+                    <div style={{ marginTop: 8 }}>IFSC: {IFSC || '[IFSC]'}</div>
+                    <div style={{ marginTop: 8 }}>Bank: {bankName || '[Bank Name]'}</div>
+                    <div style={{ marginTop: 8 }}>I, {userName}, hereby request the closure of account number {accountNumber || '[Account Number]'} held in the name of the late {deceasedName || '[Deceased Name]'}. I am the {relationship} and enclose required documents.</div>
+                </div>
+            );
+        }
+        return <div>Preview not available for this document type.</div>;
     };
 
     return (
@@ -112,36 +165,106 @@ const Documents = () => {
                     icon="�"
                     name="Transmission Request Letter"
                     meta="Demat / securities transmission"
-                    onDownload={() => handleGenerate('transmission')}
+                    onDownload={() => openModal('transmission')}
                 />
 
                 <DocCard
                     icon="🛡"
                     name="LIC Insurance Claim"
                     meta="Death claim · Policy number required"
-                    onDownload={() => handleGenerate('lic')}
+                    onDownload={() => openModal('lic')}
                 />
 
                 <DocCard
                     icon="📊"
                     name="EPF Form 10D / 20"
                     meta="Pension / PF withdrawal · Family member"
-                    onDownload={() => handleGenerate('epf')}
+                    onDownload={() => openModal('epf')}
                 />
 
                 <DocCard
                     icon="📄"
                     name="Account Closure Request"
                     meta="Bank account closure / nomination checks"
-                    onDownload={() => handleGenerate('account_closure')}
+                    onDownload={() => openModal('account_closure')}
                 />
 
                 <DocCard
                     icon="�"
                     name="Transmission Request Letter"
                     meta="Demat / securities transmission"
-                    onDownload={() => handleGenerate('transmission')}
+                    onDownload={() => openModal('transmission')}
                 />
+
+                {modalOpen && (
+                    <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50 }}>
+                        <div style={{ width: '560px', background: '#fff', borderRadius: '12px', padding: '20px', boxShadow: 'var(--shadow-lg)' }}>
+                            <h3 style={{ marginTop: 0 }}>{selectedType === 'lic' ? 'LIC Claim Details' : selectedType === 'epf' ? 'EPF Details' : selectedType === 'transmission' ? 'Demat Transmission Details' : 'Account Closure Details'}</h3>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                <label style={{ fontSize: 13 }}>Deceased / Account Holder Name</label>
+                                        <input value={fields.deceasedName || ''} onChange={e => setFields(f => ({ ...f, deceasedName: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                        {errors.deceasedName && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.deceasedName}</div>}
+
+                                {(selectedType === 'transmission') && (
+                                    <>
+                                        <label style={{ fontSize: 13 }}>Demat Account Number</label>
+                                        <input value={fields.dematAccountNo || ''} onChange={e => setFields(f => ({ ...f, dematAccountNo: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                        {errors.dematAccountNo && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.dematAccountNo}</div>}
+                                    </>
+                                )}
+
+                                {(selectedType === 'lic') && (
+                                    <>
+                                        <label style={{ fontSize: 13 }}>Policy Number</label>
+                                        <input value={fields.policyNumber || ''} onChange={e => setFields(f => ({ ...f, policyNumber: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                        {errors.policyNumber && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.policyNumber}</div>}
+                                    </>
+                                )}
+
+                                {(selectedType === 'epf') && (
+                                    <>
+                                        <label style={{ fontSize: 13 }}>UAN Number</label>
+                                        <input value={fields.UAN || ''} onChange={e => setFields(f => ({ ...f, UAN: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                        {errors.UAN && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.UAN}</div>}
+                                    </>
+                                )}
+
+                                {(selectedType === 'account_closure' || selectedType === 'sbi') && (
+                                    <>
+                                        <label style={{ fontSize: 13 }}>Account Number</label>
+                                        <input value={fields.accountNumber || ''} onChange={e => setFields(f => ({ ...f, accountNumber: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                        {errors.accountNumber && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.accountNumber}</div>}
+
+                                        <label style={{ fontSize: 13 }}>IFSC (optional)</label>
+                                        <input value={fields.IFSC || ''} onChange={e => setFields(f => ({ ...f, IFSC: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+
+                                        <label style={{ fontSize: 13 }}>Bank / Branch Name (optional)</label>
+                                        <input value={fields.bankName || ''} onChange={e => setFields(f => ({ ...f, bankName: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                    </>
+                                )}
+
+                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginTop: '12px', alignItems: 'center' }}>
+                                    <div style={{ display: 'flex', gap: '8px' }}>
+                                        <button onClick={closeModal} style={{ padding: '10px 14px', borderRadius: '10px', border: '1px solid var(--border)', background: 'transparent' }}>Cancel</button>
+                                        <button onClick={() => setShowPreview(p => !p)} style={{ padding: '10px 14px', borderRadius: '10px', border: '1px solid var(--border)', background: 'white' }}>{showPreview ? 'Hide Preview' : 'Preview'}</button>
+                                    </div>
+                                    <div>
+                                        <button onClick={handleSubmit} style={{ padding: '10px 14px', borderRadius: '10px', background: 'var(--deep-teal)', color: '#fff' }}>Download</button>
+                                    </div>
+                                </div>
+
+                                {showPreview && (
+                                    <div style={{ marginTop: 12, borderTop: '1px solid var(--border)', paddingTop: 12 }}>
+                                        <h4 style={{ margin: '6px 0' }}>Preview</h4>
+                                        <div style={{ fontSize: 14, color: 'var(--text-dark)', lineHeight: 1.6 }}>
+                                            {renderPreview(selectedType, { userName, relationship, state: userState || 'Maharashtra', ...fields })}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* CTA */}
                 <div style={{

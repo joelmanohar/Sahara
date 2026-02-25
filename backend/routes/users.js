@@ -4,7 +4,6 @@ const User = require('../db/models/User');
 const Task = require('../db/models/Task');
 
 const initialTasks = [
-    { icon: '🏦', category: 'bank', name: 'SBI Savings Account', sub: 'Documents ready · Visit branch', status: 'progress' },
     { icon: '🛡', category: 'insurance', name: 'LIC Policy Claim', sub: 'Submitted · Awaiting response', status: 'submitted' },
     { icon: '📧', category: 'digital', name: 'Gmail Account', sub: 'Memorialization complete', status: 'done' },
     { icon: '📊', category: 'pension', name: 'EPF / PF Claim', sub: 'Form 10D download pending', status: 'pending' },

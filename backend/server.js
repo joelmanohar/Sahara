@@ -26,6 +26,7 @@ if (hasRealMongoUri) {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/chat', require('./routes/chat'));
 app.use('/api/documents', require('./routes/documents'));
+app.use('/api/guidance', require('./routes/guidance'));
 app.use('/api/tasks', require('./routes/tasks'));
 app.use('/api/users', require('./routes/users'));
 

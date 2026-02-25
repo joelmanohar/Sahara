@@ -36,12 +36,26 @@ exports.retrieve = async (query, accounts = [], topK = 5) => {
 
     try {
         const queryVector = await embeddingService.embed(query);
-        const { distances, labels } = index.search(queryVector, topK * 2);
+        // faiss-node expects a plain JS Array for search input (length = d for
+        // a single query, or n*d for n queries). Ensure we pass an Array.
+        const qArr = Array.isArray(queryVector) ? queryVector : Array.from(queryVector);
+        const dim = index.getDimension();
+        if (qArr.length !== dim) {
+            throw new Error(`Invalid query vector length ${qArr.length} (expected ${dim})`);
+        }
+    // faiss requires k <= ntotal
+    const ntotal = index.ntotal();
+    const k = Math.max(1, Math.min(topK * 2, ntotal));
+    const { distances, labels } = index.search(qArr, k);
 
         let results = [];
         for (let i = 0; i < labels.length; i++) {
-            if (labels[i] !== -1 && chunks[labels[i]]) {
-                results.push(chunks[labels[i]]);
+            const lbl = labels[i];
+            if (Array.isArray(lbl)) {
+                // handle case where labels is n*k flattened; pick first (single query)
+                if (lbl[0] !== -1 && chunks[lbl[0]]) results.push(chunks[lbl[0]]);
+            } else {
+                if (lbl !== -1 && chunks[lbl]) results.push(chunks[lbl]);
             }
         }
 
