@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import Chip from '../components/Chip';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Search, X, Check } from 'lucide-react';
 import { updateUser } from '../services/api';
 
 const Setup = () => {
@@ -15,6 +15,8 @@ const Setup = () => {
     } = useContext(AppContext);
 
     const [loading, setLoading] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const relOptions = ['Spouse', 'Child (Son/Daughter)', 'Parent', 'Sibling', 'Legal heir/Other'];
     const stateOptions = ['Andhra Pradesh', 'Telangana', 'Maharashtra', 'Karnataka', 'Tamil Nadu', 'Delhi', 'Other'];
@@ -26,6 +28,10 @@ const Setup = () => {
         { id: 'Demat/Stocks', icon: '📈' },
         { id: 'UPI Wallet', icon: '💸' }
     ];
+
+    const filteredAccOptions = accOptions.filter(opt =>
+        searchTerm === '' || opt.id.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const handleToggleAcc = (id) => {
         if (accounts.includes(id)) {
@@ -187,22 +193,122 @@ const Setup = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div style={{ paddingBottom: '32px' }}>
                         <label style={{ display: 'block', marginBottom: '8px', fontWeight: 600, color: 'var(--text-dark)' }}>
                             Accounts to Manage (Select all that apply)
                         </label>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                            {accOptions.map(opt => (
-                                <Chip
-                                    key={opt.id}
-                                    label={`${opt.icon} ${opt.id}`}
-                                    selected={accounts.includes(opt.id)}
-                                    onToggle={() => handleToggleAcc(opt.id)}
-                                />
-                            ))}
-                        </div>
-                    </div>
 
+                        <div style={{ position: 'relative', marginBottom: '16px' }}>
+                            <div style={{ position: 'absolute', left: '12px', top: '10px', color: 'var(--text-light)' }}>
+                                <Search size={18} />
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Search account types..."
+                                value={searchTerm}
+                                onFocus={() => setIsDropdownOpen(true)}
+                                onChange={(e) => {
+                                    setSearchTerm(e.target.value);
+                                    setIsDropdownOpen(true);
+                                }}
+                                onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
+                                style={{
+                                    width: '100%',
+                                    boxSizing: 'border-box',
+                                    padding: '12px 16px 12px 40px',
+                                    borderRadius: '12px',
+                                    border: isDropdownOpen ? '2px solid var(--gold)' : '1px solid var(--border)',
+                                    fontSize: '14px',
+                                    backgroundColor: '#fff',
+                                    color: 'var(--text-dark)',
+                                    outline: 'none',
+                                    transition: 'border-color 0.2s'
+                                }}
+                            />
+
+                            {/* Dropdown Menu */}
+                            {isDropdownOpen && (
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: 0,
+                                    right: 0,
+                                    marginTop: '8px',
+                                    backgroundColor: '#fff',
+                                    borderRadius: '12px',
+                                    border: '1px solid var(--border)',
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                                    maxHeight: '240px',
+                                    overflowY: 'auto',
+                                    zIndex: 10
+                                }}>
+                                    {filteredAccOptions.map(opt => {
+                                        const isSelected = accounts.includes(opt.id);
+                                        return (
+                                            <div
+                                                key={opt.id}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleToggleAcc(opt.id);
+                                                }}
+                                                style={{
+                                                    padding: '12px 16px',
+                                                    cursor: 'pointer',
+                                                    borderBottom: '1px solid var(--border)',
+                                                    backgroundColor: isSelected ? 'var(--pale-teal)' : '#fff',
+                                                    transition: 'background-color 0.2s',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'space-between'
+                                                }}
+                                            >
+                                                <div style={{ fontWeight: 600, color: 'var(--text-dark)' }}>
+                                                    {opt.icon} {opt.id}
+                                                </div>
+                                                {isSelected && <Check size={18} color="var(--deep-teal)" />}
+                                            </div>
+                                        );
+                                    })}
+                                    {filteredAccOptions.length === 0 && (
+                                        <div style={{ padding: '16px', color: 'var(--text-light)', textAlign: 'center', fontSize: '14px' }}>
+                                            No accounts found for "{searchTerm}"
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Selected Chips */}
+                        {accounts.length > 0 && (
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                                {accounts.map(accId => {
+                                    const opt = accOptions.find(o => o.id === accId);
+                                    if (!opt) return null;
+                                    return (
+                                        <div key={`chip-${opt.id}`} style={{
+                                            display: 'flex', alignItems: 'center', gap: '6px',
+                                            padding: '6px 12px', borderRadius: '16px',
+                                            backgroundColor: 'var(--pale-teal)', border: '1px solid rgba(74,139,139,0.3)',
+                                            fontSize: '13px', fontWeight: 600, color: 'var(--deep-teal)'
+                                        }}>
+                                            {opt.icon} {opt.id}
+                                            <button
+                                                onClick={() => handleToggleAcc(opt.id)}
+                                                style={{
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    width: '16px', height: '16px', borderRadius: '50%',
+                                                    backgroundColor: 'rgba(74,139,139,0.1)', color: 'var(--deep-teal)',
+                                                    border: 'none', cursor: 'pointer', padding: 0
+                                                }}
+                                            >
+                                                <X size={12} />
+                                            </button>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
-import { ArrowLeft, Info } from 'lucide-react';
+import { ArrowLeft, Info, Search, X, Check } from 'lucide-react';
 // StepCard imported previously but not used in this screen
 
 const Guidance = () => {
@@ -172,36 +172,53 @@ const Guidance = () => {
         return availableModules[0] || 'bank';
     };
 
-    const [selected, setSelected] = React.useState(getInitialSelected());
-    const active = modules[selected];
+    const [selectedModules, setSelectedModules] = React.useState([getInitialSelected()]);
+    const [searchTerm, setSearchTerm] = React.useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
     // Update selected when available modules change
     useEffect(() => {
-        if (!availableModules.includes(selected)) {
-            setSelected(availableModules[0] || 'bank');
+        if (!availableModules.some(m => selectedModules.includes(m))) {
+            setSelectedModules([availableModules[0] || 'bank']);
         }
-    }, [availableModules, selected]);
+    }, [availableModules, selectedModules]);
 
-    // Get dynamic header info based on task
+    const filteredModules = availableModules.filter(key =>
+        searchTerm === '' ||
+        modules[key].title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        modules[key].covers.some(c => c.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
+    const toggleSelection = (key) => {
+        if (selectedModules.includes(key)) {
+            setSelectedModules(selectedModules.filter(m => m !== key));
+        } else {
+            setSelectedModules([...selectedModules, key]);
+        }
+    };
+
+    // Get dynamic header info based on task or active module
     const getHeaderInfo = () => {
-        if (selectedTask) {
+        if (selectedModules.length > 0) {
+            const activeStepsCount = selectedModules.reduce((acc, key) => acc + (modules[key]?.steps?.length || 0), 0);
+
             return {
-                badge: selectedTask.icon || '🏦',
-                title: selectedTask.name || 'Account Guidance',
-                subtitle: selectedTask.sub || 'Step-by-step process',
-                steps: selectedTask.status === 'done' ? 'Completed' : '7 steps',
-                time: '~3–4 weeks',
-                visit: 'Branch visit needed'
+                badge: '📚',
+                title: 'All Guidance Topics',
+                subtitle: selectedModules.length === 1 ? modules[selectedModules[0]].title : `${selectedModules.length} Topics Selected`,
+                steps: `${activeStepsCount} steps in total`,
+                time: 'Process specific',
+                visit: 'Requirements vary'
             };
         }
         // Default fallback
         return {
-            badge: '🏦',
-            title: 'Account Guidance',
-            subtitle: 'Step-by-step process',
-            steps: '7 steps',
-            time: '~3–4 weeks',
-            visit: 'Branch visit needed'
+            badge: '📚',
+            title: 'All Guidance Topics',
+            subtitle: 'Select topics below',
+            steps: 'Various steps',
+            time: 'Process specific',
+            visit: 'Requirements vary'
         };
     };
 
@@ -271,54 +288,172 @@ const Guidance = () => {
 
                 <div style={{
                     fontSize: '12px', fontWeight: 600, letterSpacing: '1px',
-                    color: 'var(--text-light)', marginBottom: '24px'
+                    color: 'var(--text-light)', marginBottom: '16px'
                 }}>
                     STEP-BY-STEP PROCESS
                 </div>
 
-                <div style={{ display: 'flex', gap: '12px', marginBottom: '18px', flexWrap: 'wrap' }}>
-                    {availableModules.map(key => (
-                        <button
-                            key={key}
-                            onClick={() => setSelected(key)}
-                            style={{
-                                padding: '8px 12px', borderRadius: '12px', border: selected === key ? '2px solid var(--gold)' : '1px solid var(--border)',
-                                background: selected === key ? 'var(--pale-teal)' : '#fff', fontWeight: 600
+                <div style={{ marginBottom: '24px', position: 'relative' }}>
+                    <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'absolute', left: '12px', top: '10px', color: 'var(--text-light)' }}>
+                            <Search size={18} />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search process..."
+                            value={searchTerm}
+                            onFocus={() => {
+                                setIsDropdownOpen(true);
+                                setSearchTerm(''); // Clear to show all options on focus
                             }}
-                        >
-                            {modules[key].title}
-                        </button>
-                    ))}
-                </div>
-
-                <div style={{ marginBottom: '12px' }}>
-                    <h2 style={{ margin: '8px 0 6px' }}>{active.title}</h2>
-                    <div style={{ color: 'var(--text-mid)', marginBottom: '12px' }}>
-                        Covers: {active.covers.join(' · ')}
+                            onChange={(e) => {
+                                setSearchTerm(e.target.value);
+                                setIsDropdownOpen(true);
+                            }}
+                            onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)} // Delay to allow click
+                            style={{
+                                width: '100%',
+                                boxSizing: 'border-box',
+                                padding: '12px 16px 12px 40px',
+                                borderRadius: '12px',
+                                border: isDropdownOpen ? '2px solid var(--gold)' : '1px solid var(--border)',
+                                fontSize: '14px',
+                                backgroundColor: '#fff',
+                                color: 'var(--text-dark)',
+                                outline: 'none',
+                                transition: 'border-color 0.2s'
+                            }}
+                        />
                     </div>
 
-                    <div style={{ display: 'flex', gap: '18px', marginBottom: '16px', flexWrap: 'wrap' }}>
-                        {active.officialLinks.map((l, i) => (
-                            <a key={i} href={l.url} target="_blank" rel="noreferrer" style={{ color: 'var(--deep-teal)', fontWeight: 600 }}>
-                                {l.label}
-                            </a>
+                    {/* Dropdown Menu */}
+                    {isDropdownOpen && (
+                        <div style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            right: 0,
+                            marginTop: '8px',
+                            backgroundColor: '#fff',
+                            borderRadius: '12px',
+                            border: '1px solid var(--border)',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                            maxHeight: '280px',
+                            overflowY: 'auto',
+                            zIndex: 10
+                        }}>
+                            {filteredModules.map(key => {
+                                const isSelected = selectedModules.includes(key);
+                                return (
+                                    <div
+                                        key={key}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleSelection(key);
+                                        }}
+                                        style={{
+                                            padding: '12px 16px',
+                                            cursor: 'pointer',
+                                            borderBottom: '1px solid var(--border)',
+                                            backgroundColor: isSelected ? 'var(--pale-teal)' : '#fff',
+                                            transition: 'background-color 0.2s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'space-between'
+                                        }}
+                                    >
+                                        <div style={{ flex: 1 }}>
+                                            <div style={{ fontWeight: 600, color: 'var(--text-dark)', marginBottom: '4px' }}>
+                                                {modules[key].title}
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: 'var(--text-mid)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                                {modules[key].covers.join(' · ')}
+                                            </div>
+                                        </div>
+                                        {isSelected && <Check size={18} color="var(--deep-teal)" />}
+                                    </div>
+                                );
+                            })}
+                            {filteredModules.length === 0 && (
+                                <div style={{ padding: '16px', color: 'var(--text-light)', textAlign: 'center', fontSize: '14px' }}>
+                                    No processes found for "{searchTerm}"
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                {/* Selected Chips */}
+                {selectedModules.length > 0 && (
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+                        {selectedModules.map(key => (
+                            <div key={`chip-${key}`} style={{
+                                display: 'flex', alignItems: 'center', gap: '6px',
+                                padding: '6px 12px', borderRadius: '16px',
+                                backgroundColor: 'var(--pale-teal)', border: '1px solid rgba(74,139,139,0.3)',
+                                fontSize: '13px', fontWeight: 600, color: 'var(--deep-teal)'
+                            }}>
+                                {modules[key].title}
+                                <button
+                                    onClick={() => toggleSelection(key)}
+                                    style={{
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        width: '16px', height: '16px', borderRadius: '50%',
+                                        backgroundColor: 'rgba(74,139,139,0.1)', color: 'var(--deep-teal)',
+                                        border: 'none', cursor: 'pointer', padding: 0
+                                    }}
+                                >
+                                    <X size={12} />
+                                </button>
+                            </div>
                         ))}
                     </div>
+                )}
 
-                    <div style={{ marginBottom: '12px' }}>
-                        <h3 style={{ fontSize: '14px', margin: '6px 0' }}>Exact Steps</h3>
-                        <ol style={{ color: 'var(--text-light)', lineHeight: 1.6 }}>
-                            {active.steps.map((s, i) => <li key={i}>{s}</li>)}
-                        </ol>
+                {/* Process Steps Loop */}
+                {selectedModules.length === 0 ? (
+                    <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-light)' }}>
+                        Please select a process category from the search bar above to view the guidance steps.
                     </div>
+                ) : (
+                    selectedModules.map((key) => {
+                        const moduleData = modules[key];
+                        return (
+                            <div key={key} style={{
+                                marginBottom: '24px',
+                                paddingBottom: '24px',
+                                borderBottom: '1px solid var(--border)'
+                            }}>
+                                <h2 style={{ margin: '8px 0 6px', color: 'var(--deep-teal)', fontSize: '18px' }}>{moduleData.title}</h2>
+                                <div style={{ color: 'var(--text-mid)', marginBottom: '12px', fontSize: '13px' }}>
+                                    Covers: {moduleData.covers.join(' · ')}
+                                </div>
 
-                    <div>
-                        <h3 style={{ fontSize: '14px', margin: '6px 0' }}>Required Documents</h3>
-                        <ul style={{ color: 'var(--text-light)', lineHeight: 1.6 }}>
-                            {active.requiredDocs.map((d, i) => <li key={i}>{d}</li>)}
-                        </ul>
-                    </div>
-                </div>
+                                <div style={{ display: 'flex', gap: '18px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                                    {moduleData.officialLinks.map((l, i) => (
+                                        <a key={i} href={l.url} target="_blank" rel="noreferrer" style={{ color: 'var(--gold)', fontWeight: 600, fontSize: '13px' }}>
+                                            {l.label}
+                                        </a>
+                                    ))}
+                                </div>
+
+                                <div style={{ marginBottom: '16px' }}>
+                                    <h3 style={{ fontSize: '14px', margin: '6px 0', color: 'var(--text-dark)' }}>Exact Steps</h3>
+                                    <ol style={{ color: 'var(--text-light)', lineHeight: 1.6, paddingLeft: '20px', margin: '8px 0' }}>
+                                        {moduleData.steps.map((s, i) => <li key={i} style={{ marginBottom: '6px' }}>{s}</li>)}
+                                    </ol>
+                                </div>
+
+                                <div>
+                                    <h3 style={{ fontSize: '14px', margin: '6px 0', color: 'var(--text-dark)' }}>Required Documents</h3>
+                                    <ul style={{ color: 'var(--text-light)', lineHeight: 1.6, paddingLeft: '20px', margin: '8px 0' }}>
+                                        {moduleData.requiredDocs.map((d, i) => <li key={i} style={{ marginBottom: '4px' }}>{d}</li>)}
+                                    </ul>
+                                </div>
+                            </div>
+                        );
+                    })
+                )}
 
             </div>
 
