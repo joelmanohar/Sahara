@@ -21,3 +21,19 @@ export const generateDocument = (type, userData) =>
     axios.post(`${BASE}/documents/generate`, { type, ...userData }, { responseType: 'blob' });
 
 export const getChatHistory = (userId) => axios.get(`${BASE}/chat/${userId}`);
+
+// Account Identification
+export const detectAccountsFromDocument = (formData) =>
+    axios.post(`${BASE}/accounts/detect-document`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    });
+
+export const detectAccountsFromText = (data) =>
+    axios.post(`${BASE}/accounts/detect-text`, data);
+
+export const mergeAccounts = (userId, accounts) =>
+    axios.put(`${BASE}/accounts/${userId}/merge`, { accounts });
+
+export const getUserAccounts = (userId) =>
+    axios.get(`${BASE}/accounts/${userId}`);
+

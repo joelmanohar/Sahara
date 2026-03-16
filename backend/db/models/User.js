@@ -9,7 +9,12 @@ const UserSchema = new mongoose.Schema({
     relationship: { type: String },
     state: { type: String },
     employment: { type: String },
-    accounts: [{ type: String }],
+    accounts: [{
+        type: { type: String },
+        name: { type: String },
+        note: { type: String },
+        detectedBy: { type: String, enum: ['manual', 'document', 'email', 'sms'], default: 'manual' }
+    }],
     chatHistory: [{
         role: { type: String },
         content: { type: String },

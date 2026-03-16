@@ -26,7 +26,16 @@ const Setup = () => {
         { id: 'Life Insurance', icon: '🛡' },
         { id: 'EPF/PF', icon: '📊' },
         { id: 'Demat/Stocks', icon: '📈' },
-        { id: 'UPI Wallet', icon: '💸' }
+        { id: 'UPI Wallet', icon: '💸' },
+        { id: 'Mutual Funds', icon: '💹' },
+        { id: 'PPF', icon: '🏛' },
+        { id: 'NPS (Pension)', icon: '🏦' },
+        { id: 'Fixed Deposit', icon: '💰' },
+        { id: 'Credit Card', icon: '💳' },
+        { id: 'Digital Wallet', icon: '📱' },
+        { id: 'Social Media Account', icon: '📣' },
+        { id: 'Post Office Savings', icon: '📮' },
+        { id: 'Real Estate / Property', icon: '🏠' }
     ];
 
     const filteredAccOptions = accOptions.filter(opt =>

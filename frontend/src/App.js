@@ -10,6 +10,7 @@ import Dashboard from './screens/Dashboard';
 import Documents from './screens/Documents';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import AccountIdentifier from './screens/AccountIdentifier';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const ScreenManager = () => {
@@ -34,6 +35,7 @@ const ScreenManager = () => {
             case 'guidance': return <Guidance key="guidance" />;
             case 'dashboard': return <Dashboard key="dashboard" />;
             case 'documents': return <Documents key="documents" />;
+            case 'accounts': return <AccountIdentifier key="accounts" />;
             default: return <Dashboard key="dashboard" />; // Default to dashboard if logged in
         }
     };

@@ -160,6 +160,37 @@ const Dashboard = () => {
                     </div>
                 </div>
 
+                {/* Identify Accounts Promo Card */}
+                <div
+                    onClick={() => navigate('accounts')}
+                    style={{
+                        backgroundColor: '#fff',
+                        borderRadius: '16px',
+                        border: '1.5px solid var(--gold)',
+                        padding: '18px 20px',
+                        marginBottom: '20px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 10px rgba(195,155,100,0.15)',
+                        transition: 'transform 0.15s, box-shadow 0.15s'
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(195,155,100,0.25)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 10px rgba(195,155,100,0.15)'; }}
+                >
+                    <div style={{ fontSize: '32px', lineHeight: 1 }}>🔍</div>
+                    <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 700, fontSize: '15px', color: 'var(--text-dark)', marginBottom: '3px' }}>
+                            Identify Accounts
+                        </div>
+                        <div style={{ fontSize: '13px', color: 'var(--text-light)' }}>
+                            Upload documents, scan emails/SMS, or add manually
+                        </div>
+                    </div>
+                    <div style={{ color: 'var(--gold)', fontWeight: 700, fontSize: '18px' }}>›</div>
+                </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                     <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-dark)', fontFamily: 'DM Sans, sans-serif' }}>
                         All Tasks

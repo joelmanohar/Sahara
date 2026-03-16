@@ -29,6 +29,8 @@ app.use('/api/documents', require('./routes/documents'));
 app.use('/api/guidance', require('./routes/guidance'));
 app.use('/api/tasks', require('./routes/tasks'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/accounts', require('./routes/accounts'));
+
 
 // Error Handler
 app.use((err, req, res, next) => {

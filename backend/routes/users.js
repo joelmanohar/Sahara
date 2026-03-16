@@ -32,7 +32,14 @@ router.put('/:id', async (req, res, next) => {
         user.relationship = relationship || user.relationship;
         user.state = state || user.state;
         user.employment = employment || user.employment;
-        user.accounts = accounts || user.accounts;
+        user.accounts = (accounts || user.accounts || []).map(a => {
+            if (typeof a === 'string') {
+                // Legacy format from Setup.jsx — convert to object
+                return { type: a, name: '', note: '', detectedBy: 'manual' };
+            }
+            return a;
+        });
+
 
         await user.save();
         console.log(`[PUT /users/${userId}] user updated`);
