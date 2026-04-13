@@ -1,5 +1,7 @@
-Bank Account (RBI + SBI):
-  Accounts ≤₹5L, no nominee: indemnity bond only (no succession cert)
+Digital Account Management After Death (India):
+
+BANK ACCOUNTS (RBI Guidelines + Major Banks):
+  Accounts ≤₹5L, no nominee: indemnity bond only (no succession cert required per RBI Master Circular)
   Docs: death cert ×3, claimant KYC, indemnity bond, passbook
   Processing: 7–15 working days
   Joint account survivor: death cert only
@@ -7,47 +9,114 @@ Bank Account (RBI + SBI):
   Above ₹5L: Legal Heir Certificate or Succession Certificate
   Escalation: Banking Ombudsman if >30 days
   SBI: visit home branch, request "Claim Form for Deceased Account"
+    Link: https://www.onlinesbi.sbi/
+  HDFC Bank: call 1800-266-6161
+    Link: https://www.hdfcbank.com/
+  ICICI Bank: call 1800-200-3344
+    Link: https://www.icicibank.com/
 
 Life Insurance (IRDAI + LIC):
-  Non-early claims: settle within 30 days
+  Non-early claims: settle within 30 days (IRDAI mandate)
   Early claims (<3 yrs): max 90 days
   Docs: Form A (3783), death cert, original policy, claimant ID, NEFT mandate
-  LIC: any branch, Download Form 3783 from licindia.in/forms
+  LIC: any branch, Download Form 3783
+    Link: https://licindia.in/claims-services
   Contact: 022-68276827 | claimshelpdesk@licindia.in
+  IRDAI Grievance: https://igms.irda.gov.in/
+  Toll-free: 155255
 
 EPF/PF (EPFO):
   Form 10D: monthly pension (widow/dependents)
   Form 20: lump-sum PF withdrawal
-  Form 5IF: EDLI insurance claim
+  Form 5IF: EDLI insurance claim (up to ₹7 lakh)
   Submit via employer HR or EPFO portal (if UAN active)
   Docs: death cert, UAN, nominee/heir details, bank proof
   Processing: 20 working days
+  Portal: https://unifiedportal-mem.epfindia.gov.in/
+  Helpline: 1800-118-005
+  Grievance: https://epfigms.gov.in/
 
-Demat/Stocks (SEBI):
+Demat/Stocks (SEBI Guidelines):
   With nomination: 7-day settlement
   Without: transmission form + death cert + succession cert + indemnity bond
   Below ₹5L market value: indemnity bond only
-  Contact broker directly for their transmission form
+  Contact broker/DP directly for transmission form
+  NSDL: https://www.nsdl.co.in/transmission.php
+  CDSL: https://www.cdslindia.com/
+  SEBI: https://www.sebi.gov.in/
+
+Mutual Funds:
+  With nominee: Submit death cert + nominee KYC + transmission form to AMC/registrar
+  Without nominee: Legal heir certificate + consent letter from all heirs
+  CAMS: https://www.camsonline.com/ (for most AMCs)
+  KFintech: https://www.kfintech.com/ (for remaining AMCs)
+  Process: 7-15 working days
+  Important: Units are transmitted, not redeemed. Tax applies only on future redemption.
+
+PPF (Public Provident Fund):
+  Nominee receives balance + interest up to date of death
+  If no nominee: Legal heir with succession certificate
+  Submit at the Post Office or bank where PPF is held
+  Docs: death cert, nominee ID, PPF passbook, application form
+  Process: 15-30 working days
+  Link: https://www.indiapost.gov.in/
+
+NPS (National Pension System):
+  Pre-retirement death: Entire corpus to nominee as lump sum
+  Post-retirement death: Depends on annuity type chosen
+  Submit claim through POP (Point of Presence)
+  Link: https://www.npscra.nsdl.co.in/
 
 UPI Wallets:
-  No formal nomination system in India
+  No formal nomination system in India for wallets
   Contact support with death cert + claimant ID
   PhonePe: support.phonepe.com → deceased account report
+    Link: https://support.phonepe.com/
   Google Pay: Google account support
+    Link: https://support.google.com/googlepay/
   Paytm: care@paytm.com subject "Deceased Account – [Phone]"
+    Link: https://paytm.com/care/
+  Important: Transfer any wallet balance BEFORE deactivating mobile SIM
 
-Email:
-  Gmail: g.co/deceaseduserhelp — death cert + relationship proof
-  No account access; only closure/deletion
-  Outlook: microsoft.com/en-us/concern/deceased
+Email Accounts:
+  Gmail: Inactive Account Manager or deceased user request
+    Link: https://support.google.com/accounts/troubleshooter/6357590
+  No account access given; only closure/data download possible
+  Google Takeout (for data before closure): https://takeout.google.com/
+  Outlook/Microsoft: deceased user request form
+    Link: https://www.microsoft.com/en-us/concern/deceased
+  Yahoo: Send death cert + proof to Yahoo support
+  Processing: 2-4 weeks
 
 Social Media:
-  Facebook: memorialization/removal → facebook.com/help/deceased
-  Instagram: removal only → help.instagram.com/264154560391256
-  Twitter/X: deactivation → help.twitter.com/forms/privacy
-  WhatsApp: unlink SIM; auto-deletes after 120 days
+  Facebook: memorialization or removal request
+    Memorialization: https://www.facebook.com/help/1506822589577997
+    Removal: https://www.facebook.com/help/228813257197480
+  Instagram: removal only (no memorialization for Instagram)
+    Link: https://help.instagram.com/264154560391256
+  Twitter/X: deactivation request
+    Link: https://help.twitter.com/forms/privacy
+  LinkedIn: memorialization request
+    Link: https://www.linkedin.com/help/linkedin/answer/a1342062
+  WhatsApp: unlink SIM; auto-deletes after 120 days of inactivity
+  YouTube: Covered under Google Account closure
 
-Subscriptions:
-  List from bank statements; contact each service's support
-  Most will cancel + pro-rata refund with death cert
+Subscriptions and Recurring Payments:
+  List from bank statements and UPI AutoPay
+  Contact each service's support
+  Most will cancel + provide pro-rata refund with death cert
   Cancel UPI AutoPay via bank's UPI app
+  Common services to check:
+    - Netflix, Amazon Prime, Disney+, Spotify
+    - Newspapers/magazines subscriptions
+    - Cloud storage (Google One, iCloud, OneDrive)
+    - Domain names, web hosting
+    - Gym memberships
+    - OTT platforms
+
+Vehicle Registration (RTO):
+  Submit Form 31 to RTO for transfer
+  Docs: death cert, legal heir cert, RC book, insurance, PUC
+  If vehicle loan exists: NOC from bank after loan settlement
+  Link: https://parivahan.gov.in/
+  Process: 15-30 working days

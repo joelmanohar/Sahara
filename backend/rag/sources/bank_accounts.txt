@@ -1,0 +1,88 @@
+Bank Account Claims After Death (India — RBI Guidelines):
+
+OVERVIEW:
+When an account holder passes away, the bank account must be either transferred to the nominee/legal heir or closed. The process depends on whether a nominee exists, the account balance, and the type of account.
+
+SCENARIO A: Nominee Exists
+STEP 1: Visit the bank branch where the account is held
+STEP 2: Inform the branch manager about the death and request the "Claim Form for Deceased Account Holder"
+STEP 3: Submit the following documents:
+  - Death certificate (certified copy)
+  - Nominee's identity proof (Aadhaar + PAN)
+  - Nominee's bank account details (for fund transfer)
+  - Original passbook or last statement
+  - Duly filled claim/nomination form
+STEP 4: Bank verifies documents (7-15 working days)
+STEP 5: Funds transferred to nominee's account or demand draft issued
+- Timeline: 15-30 working days
+- Link: https://www.rbi.org.in/
+
+SCENARIO B: No Nominee — Balance ≤ ₹5,00,000
+Per RBI Master Circular, banks MUST settle claims without insisting on succession certificate:
+STEP 1: Visit the branch and explain the situation
+STEP 2: Submit:
+  - Death certificate (certified copy)
+  - Letter of Indemnity (provided by bank)
+  - Affidavit on stamp paper (as per bank format)
+  - Claimant's KYC (Aadhaar + PAN)
+  - Relationship proof (ration card, family ID, or affidavit)
+STEP 3: Bank may ask for surety from another account holder
+STEP 4: Settlement within 15-30 working days
+- Important: RBI mandates that banks should NOT insist on legal heir certificate or succession certificate for amounts up to ₹5 lakh.
+
+SCENARIO C: No Nominee — Balance > ₹5,00,000
+STEP 1: Obtain Legal Heir Certificate from Tehsildar/SDM OR Succession Certificate from Civil Court
+  - Legal Heir Certificate: Apply at Tehsildar office with death certificate, family details, and two witnesses. Processing: 15-30 days. Cost: ₹50-100.
+  - Succession Certificate: Apply in Civil Court under Indian Succession Act. Processing: 2-6 months. Cost: Court fees + lawyer fees.
+STEP 2: Submit to bank along with:
+  - Death certificate
+  - Claimant's KYC
+  - Bank claim form
+  - Original passbook
+STEP 3: Bank processes claim (15-30 working days after document verification)
+
+JOINT ACCOUNT:
+- If account is "Either or Survivor" or "Former or Survivor": The surviving holder can continue operating the account. Submit death certificate to update records.
+- If account is "Joint": The surviving holder(s) need to follow the claim process above.
+
+FIXED DEPOSITS (FD):
+- Nominee exists: FD can be prematurely withdrawn or transferred. No penalty for premature closure due to death.
+- No nominee: Same process as Scenario B or C above.
+
+RECURRING DEPOSITS (RD):
+- Can be prematurely closed with death certificate + nominee/legal heir documents.
+- Matured RDs: Claim directly with documents.
+
+SAFE DEPOSIT LOCKER:
+- Nominee/legal heir can access the locker in the presence of bank officials.
+- Contents inventoried and handed over.
+- Locker rent must be settled.
+
+BANK-SPECIFIC CONTACTS:
+- SBI: Visit home branch, call 1800-425-3800
+  Link: https://www.onlinesbi.sbi/
+- HDFC Bank: Call 1800-266-6161, visit branch
+  Link: https://www.hdfcbank.com/
+- ICICI Bank: Call 1800-200-3344
+  Link: https://www.icicibank.com/
+- PNB: Call 1800-180-2222
+  Link: https://www.pnbindia.in/
+- Bank of Baroda: Call 1800-258-4455
+  Link: https://www.bankofbaroda.in/
+
+ESCALATION:
+- If bank delays beyond 30 days: File complaint with Banking Ombudsman
+  Link: https://cms.rbi.org.in/
+- RBI Helpline: 14448
+- Written complaint to Regional Office of RBI
+
+REQUIRED DOCUMENTS CHECKLIST:
+1. Death certificate (certified copy) × 2
+2. Claimant's Aadhaar card
+3. Claimant's PAN card
+4. Bank account passbook or last statement
+5. Claim form (bank-specific)
+6. Letter of Indemnity (if no nominee, balance ≤ ₹5L)
+7. Legal Heir Certificate / Succession Certificate (if no nominee, balance > ₹5L)
+8. Relationship proof
+9. Cancelled cheque of claimant's account (for fund transfer)

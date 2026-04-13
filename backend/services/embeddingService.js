@@ -1,8 +1,9 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const crypto = require('crypto');
 
-// Desired embedding dimension used elsewhere in the repo
-const DIMENSION = 1536;
+// Google text-embedding-004 outputs 768 dimensions.
+// We dynamically set DIMENSION based on which provider is active.
+let DIMENSION = 768; // default for Google text-embedding-004
 
 // Try to use Google Generative AI embeddings if configured. We require lazily
 // to avoid failing when the package isn't installed and Google keys aren't set.
@@ -16,6 +17,7 @@ if (process.env.GOOGLE_API_KEY && googleModel) {
     } catch (e) {
         console.warn('embeddingService: failed to load @google/generative-ai, falling back to local embeddings');
         googleClient = null;
+        DIMENSION = 768; // local fallback uses this
     }
 } else if (process.env.GOOGLE_API_KEY && !googleModel) {
     console.warn('embeddingService: GOOGLE_API_KEY set but GOOGLE_EMBEDDING_MODEL is not set; falling back to local embeddings');
@@ -50,6 +52,8 @@ function localEmbed(text) {
     return out;
 }
 
+exports.DIMENSION = DIMENSION;
+
 exports.embed = async (text) => {
     // Use Google client if available
     if (googleClient) {
@@ -57,7 +61,13 @@ exports.embed = async (text) => {
             const model = googleClient.getGenerativeModel({ model: googleModel });
             const result = await model.embedContent(text);
             // result.embedding.values is expected to be an array/Float32Array
-            return Float32Array.from(result.embedding.values);
+            const vec = Float32Array.from(result.embedding.values);
+            // Update dimension dynamically on first successful embed
+            if (vec.length !== DIMENSION) {
+                DIMENSION = vec.length;
+                exports.DIMENSION = DIMENSION;
+            }
+            return vec;
         } catch (err) {
             console.error('Google embedding error:', err.message || err);
             console.warn('Falling back to local deterministic embeddings');

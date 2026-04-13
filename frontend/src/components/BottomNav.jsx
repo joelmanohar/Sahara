@@ -8,8 +8,8 @@ const BottomNav = () => {
     const tabs = [
         { id: 'chat', label: 'Assistant', icon: MessageSquare },
         { id: 'dashboard', label: 'Tasks', icon: ClipboardList },
-        { id: 'documents', label: 'Documents', icon: FileText, badge: 3 },
-        { id: 'guidance', label: 'Guides', icon: BookOpen } // Mocking guidance flow
+        { id: 'documents', label: 'Documents', icon: FileText },
+        { id: 'guidance', label: 'Guides', icon: BookOpen }
     ];
 
     return (

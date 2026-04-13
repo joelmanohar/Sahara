@@ -1,0 +1,106 @@
+EPF / Provident Fund Claims After Death (India — EPFO Guidelines):
+
+OVERVIEW:
+When an EPF member passes away, the nominee or legal heir can claim the accumulated PF balance, pension (EPS), and insurance (EDLI). Three separate forms cover these benefits. The total claim can be substantial as it includes employer + employee contributions + interest.
+
+THREE TYPES OF CLAIMS:
+
+1. EPF WITHDRAWAL (Form 20):
+- Lump-sum withdrawal of full PF balance
+- Available to: Nominee (if registered) or legal heir
+- Amount: Full PF accumulation (employee + employer share + interest)
+
+2. PENSION CLAIM (Form 10D):
+- Monthly pension for widow/widower and children
+- Available to: Spouse of deceased member
+- EPS pension: Based on years of service and average salary
+- Children's pension: Until age 25 (two children maximum)
+- Orphan pension: If both parents deceased
+
+3. EDLI INSURANCE (Form 5IF):
+- Employees' Deposit Linked Insurance Scheme
+- Lump-sum insurance payout
+- Maximum benefit: Up to ₹7 lakh (based on last 12 months average balance)
+- Available to: Nominee or family members
+
+STEP 1: Gather Information
+- Deceased's UAN (Universal Account Number) — check salary slips or EPFO portal
+- Member ID / PF number
+- Employer details (last employer)
+- Aadhaar and bank details linked to UAN
+
+STEP 2: Contact Employer HR
+- Inform the employer about the death
+- Request employer to:
+  - Attest the claim forms
+  - Provide employment details and wage certificate
+  - Submit forms to EPFO (employer attestation is mandatory for offline claims)
+
+STEP 3: Prepare Documents
+REQUIRED DOCUMENTS:
+  - Death certificate (certified copy)
+  - Relationship proof with deceased (marriage certificate, ration card, family ID)
+  - Nominee's/claimant's Aadhaar card
+  - Nominee's/claimant's PAN card
+  - Nominee's/claimant's bank account details (cancelled cheque / passbook copy)
+  - UAN card or member passbook printout
+  - Form 20 (PF withdrawal) — duly filled and attested by employer
+  - Form 10D (pension) — if claiming EPS pension
+  - Form 5IF (EDLI insurance) — for insurance benefit
+  - Succession certificate / Legal heir certificate (if no nominee registered)
+
+STEP 4: Submit Claims
+OPTION A — Online (if UAN is Aadhaar-linked):
+  - Login to EPFO Member Portal: https://unifiedportal-mem.epfindia.gov.in/
+  - Navigate to "Online Services" > "Claim (Form-31, 19, 10D, 10C)"
+  - Select appropriate claim type
+  - Upload required documents
+  - Submit electronically
+
+OPTION B — Offline:
+  - Download forms from https://www.epfindia.gov.in/site_en/Forms.php
+  - Fill and get attested by employer
+  - Submit at the regional EPFO office with jurisdiction over the member's account
+  - Get acknowledgment receipt
+
+STEP 5: Processing
+- Online claims: 10-20 working days
+- Offline claims: 20-30 working days
+- If KYC is incomplete or mismatch: EPFO will return the form for correction
+
+STEP 6: Receive Payment
+- PF balance credited to claimant's bank account via NEFT
+- EPS pension credited monthly
+- EDLI amount credited as lump sum
+
+SPECIAL CASES:
+- If employer is closed/non-responsive: Submit directly to EPFO with an affidavit explaining the situation
+- If UAN is not activated: Visit EPFO office with member details for manual processing
+- Multiple PF accounts: Each account needs separate claim
+- International workers: Special provisions under Social Security Agreements
+
+EPFO CONTACT:
+- Portal: https://www.epfindia.gov.in/
+- Member Portal: https://unifiedportal-mem.epfindia.gov.in/
+- Helpline: 1800-118-005 (toll-free)
+- Grievance: https://epfigms.gov.in/
+- Email: Check regional office contacts on EPFO website
+
+ESCALATION:
+- If claim is delayed beyond 30 days: File grievance on EPF iGMS portal
+  Link: https://epfigms.gov.in/
+- If rejected: Appeal to Regional PF Commissioner
+- Further appeal: EPF Appellate Tribunal
+- RTI: File RTI application to track status
+
+TAX IMPLICATIONS:
+- EPF withdrawal after 5 years of service: TAX-FREE
+- EPF withdrawal before 5 years: Taxable as income
+- EPS pension: Taxable as salary income
+- EDLI: TAX-FREE
+
+TIMELINE SUMMARY:
+- Gather documents: 1-2 weeks
+- Employer attestation: 1 week
+- EPFO processing: 2-4 weeks
+- Total expected: 4-8 weeks

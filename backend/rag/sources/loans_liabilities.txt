@@ -1,0 +1,137 @@
+Loans and Liabilities Settlement After Death (India):
+
+OVERVIEW:
+Debts and liabilities do not automatically disappear when a person dies. They must be settled from the deceased's estate. However, legal heirs are NOT personally liable for debts beyond the value of inherited assets (unless they are co-borrowers or guarantors).
+
+KEY PRINCIPLE:
+- Debts are settled from the deceased's estate (assets)
+- Legal heirs are NOT personally liable (unless co-borrower/guarantor)
+- Secured loans: Lender can seize the pledged asset
+- Unsecured loans: Recovered from estate; cannot pursue heirs personally
+
+TYPE 1: HOME LOAN / MORTGAGE
+
+SCENARIO A: With Co-borrower
+- Co-borrower continues to pay EMIs
+- Transfer loan to co-borrower's name
+- Submit death certificate to bank
+- If co-borrower cannot pay: Sell property, settle loan, distribute remainder
+
+SCENARIO B: Without Co-borrower — Insurance Exists
+- Most home loans have credit life insurance
+- File claim with insurance company
+- Insurance settles the outstanding loan amount
+- Property becomes debt-free for legal heirs
+- Check if the deceased had PMJJBY (₹2 lakh cover) or bank's group insurance
+
+SCENARIO C: Without Co-borrower — No Insurance
+STEP 1: Inform the bank about the death
+STEP 2: Submit death certificate and legal heir documents
+STEP 3: Options:
+  a) Legal heir continues EMI payments and retains property
+  b) Bank sells property (with heir's consent), settles loan, returns surplus
+  c) If property value < loan amount: Bank writes off the shortfall (heirs not liable for deficit)
+STEP 4: Transfer property title to heir's name after loan settlement
+
+REQUIRED DOCUMENTS:
+- Death certificate
+- Legal Heir Certificate / Succession Certificate
+- Original loan agreement
+- Property documents
+- Insurance policy (if applicable)
+- KYC of claimant/heir
+
+TYPE 2: PERSONAL LOAN
+
+- Personal loans are UNSECURED — no collateral
+- If deceased had loan insurance: Insurance settles the loan
+- If no insurance: Loan is recovered from the estate
+- If no assets in estate: Bank writes off the loan
+- Legal heirs CANNOT be forced to pay from their personal funds
+- Exception: If heir is a co-borrower or guarantor, they are liable
+
+IMPORTANT: If bank/recovery agents harass heirs for personal loan repayment:
+- This is ILLEGAL (as per RBI Fair Practice Code)
+- File complaint with Banking Ombudsman
+  Link: https://cms.rbi.org.in/
+- Report to police if harassment continues
+
+TYPE 3: VEHICLE LOAN
+
+- Vehicle loan is secured against the vehicle
+- If loan insurance exists: Insurance settles remaining amount
+- If no insurance:
+  a) Heir continues EMIs and retains vehicle (transfer to heir's name)
+  b) Surrender vehicle to lender
+  c) Sell vehicle, settle loan, keep remainder
+- Vehicle RC transfer also required (see RTO process)
+- RTO: Submit death certificate + legal heir certificate + Form 31
+
+TYPE 4: CREDIT CARD DEBT
+
+- Credit card debt is UNSECURED
+- Card issuer will attempt recovery from estate
+- If no assets: Debt is written off
+- Heirs are NOT liable unless they are supplementary card holders
+- Inform the bank to cancel the credit card immediately
+- Outstanding auto-debits/subscriptions will stop once card is cancelled
+
+TYPE 5: GOLD LOAN
+
+- Gold loan is secured against pledged gold
+- Options:
+  a) Pay outstanding amount and retrieve gold
+  b) If unable to pay: Bank auctions the gold and settles the loan
+  c) Surplus from auction returned to heir
+- Submit death certificate and legal heir documents
+
+TYPE 6: EDUCATION LOAN
+
+- If deceased is the student (borrower): Co-borrower/guarantor is liable
+- If deceased is the parent (co-borrower): Student continues payments
+- Insurance (if any): Settles the loan
+- Moratorium: Banks may grant temporary moratorium for hardship
+
+TYPE 7: BUSINESS LOANS
+
+- Sole proprietorship: Personal liability — settled from estate
+- Partnership firm: Other partners may be jointly liable
+- Private Limited Company: Company's liability, not personal
+- Directors: Only liable if they gave personal guarantees
+
+GENERAL STEPS FOR ALL LOANS:
+
+STEP 1: Inform all lenders about the death (within 1-2 weeks)
+STEP 2: Submit death certificate to each lender
+STEP 3: Request outstanding balance statement
+STEP 4: Check for loan insurance / credit life insurance
+STEP 5: If insured: File insurance claim to settle the loan
+STEP 6: If uninsured: Negotiate with lender for settlement/closure
+STEP 7: Obtain No Dues Certificate (NDC) after settlement
+STEP 8: Keep NDC safely — it protects heirs from future claims
+
+CREDIT REPORT:
+- CIBIL record of the deceased should be updated
+- Submit death certificate to CIBIL/TransUnion
+  Link: https://www.cibil.com/
+- Prevents identity theft and fraudulent applications
+
+GOVERNMENT SCHEMES:
+- PMJJBY (Pradhan Mantri Jeevan Jyoti Bima Yojana): ₹2 lakh life cover, ₹436/year premium
+  - If deceased was enrolled: File claim with bank
+  - Link: https://www.jansuraksha.gov.in/
+- PMSBY (Pradhan Mantri Suraksha Bima Yojana): ₹2 lakh accidental death cover
+  - File claim at the bank where premium was debited
+  - Link: https://www.jansuraksha.gov.in/
+
+ESCALATION:
+- Bank harassment: Banking Ombudsman (https://cms.rbi.org.in/)
+- NBFC harassment: RBI NBFC complaint
+- Recovery agent misconduct: Police complaint + RBI complaint
+- Legal recourse: Consumer Court for unfair bank practices
+
+IMPORTANT NOTES:
+- Never sign any document acknowledging personal liability for the deceased's debts
+- Recovery agents cannot force entry, seize property without court order, or harass
+- Joint account debits after death: Inform bank immediately to freeze the deceased's share
+- Get legal advice if debt amounts are large or recovery pressure is intense

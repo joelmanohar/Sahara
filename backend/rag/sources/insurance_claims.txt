@@ -1,0 +1,86 @@
+Life Insurance Claims After Death (India — IRDAI Guidelines):
+
+OVERVIEW:
+Life insurance is one of the most important financial benefits a family can claim after a death. IRDAI mandates that insurers settle non-early death claims within 30 days of receiving all documents. Early death claims (within 3 years of policy) may take up to 90 days for investigation.
+
+TYPES OF DEATH CLAIMS:
+1. Non-Early Claim: Death occurs after 3 years of policy commencement. Straightforward settlement.
+2. Early Claim: Death occurs within 3 years. Insurer may investigate cause of death.
+3. Accidental Death Claim: If policy has accidental death benefit rider, additional payout applies.
+
+STEP 1: Locate the Policy Document
+- Check physical files, email (search "policy", "premium", "LIC", "insurance"), bank statements for premium debits
+- If policy document is lost: Contact insurer for duplicate. Online policies are accessible via insurer's portal.
+
+STEP 2: Intimate the Insurance Company
+- Call the insurer's claims helpdesk immediately
+- Register an intimation online or at the nearest branch
+- Note down the claim reference number
+
+STEP 3: Collect Required Documents
+FOR NOMINEE:
+  - Claim Form (Form A / specific insurer form)
+  - Death certificate (original or certified copy)
+  - Original policy document (or indemnity bond if lost)
+  - Nominee's identity proof (Aadhaar + PAN)
+  - Nominee's photo
+  - NEFT mandate form / cancelled cheque of nominee's bank account
+  - Hospital records / treatment summary (if death due to illness)
+  - FIR + Post-mortem report (if accidental/unnatural death)
+  - Employer certificate (if group insurance)
+
+IF NO NOMINEE:
+  - Legal Heir Certificate or Succession Certificate
+  - All documents listed above
+  - Affidavit of all legal heirs with consent for one person to receive the claim
+
+STEP 4: Submit Documents
+- Submit at the nearest branch or through the insurer's online portal
+- Get acknowledgment receipt with claim number and expected timeline
+
+STEP 5: Claim Processing
+- Non-early claims: 30 days from document submission
+- Early claims: Up to 90 days (investigation may be conducted)
+- If insurer rejects or delays: Written reason must be provided
+
+STEP 6: Receive Payout
+- Payment via NEFT to nominee's/legal heir's bank account
+- Tax: Life insurance death claim payout is TAX-FREE under Section 10(10D) of Income Tax Act
+
+LIC (Life Insurance Corporation) SPECIFIC:
+- Form: Claim Form A (Form 3783)
+  Download: https://licindia.in/claims-services
+- Submit at any LIC branch (not limited to servicing branch)
+- LIC Customer Care: 022-68276827
+- Email: claimshelpdesk@licindia.in
+- Online claim status: https://licindia.in/claim-status
+- Link: https://licindia.in/
+
+PRIVATE INSURERS:
+- HDFC Life: 1860-267-9999 | https://www.hdfclife.com/claims
+- ICICI Prudential: 1860-266-7766 | https://www.iciciprulife.com/claims
+- SBI Life: 1800-267-9090 | https://www.sbilife.co.in/en/claims
+- Max Life: 1860-120-5577 | https://www.maxlifeinsurance.com/claims
+- Bajaj Allianz: 1800-209-7272 | https://www.bajajallianzlife.com/claims
+
+HEALTH INSURANCE:
+- If the deceased had a health insurance policy and incurred medical expenses before death:
+  - File a health insurance claim for hospitalization costs
+  - Submit: Hospital bills, discharge summary, death certificate, policy document
+  - Timeline: 30 days as per IRDAI
+
+ESCALATION:
+- If claim is rejected: Request written reason. Appeal within 30 days.
+- If delayed beyond timelines: Complain to IRDAI
+  - IRDAI Grievance: igms.irda.gov.in
+  - IRDAI Toll-free: 155255
+  - Email: complaints@irdai.gov.in
+- Insurance Ombudsman: For claims up to ₹30 lakh
+  Link: https://www.cioins.co.in/
+
+IMPORTANT NOTES:
+- Do NOT delay intimation. Inform the insurer within 24-48 hours if possible.
+- Keep copies of all submitted documents.
+- If multiple policies exist, file separate claims for each.
+- Group insurance through employer: Contact HR department.
+- Ensure NEFT details are correct to avoid payment delays.

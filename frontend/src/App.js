@@ -13,8 +13,35 @@ import Register from './screens/Register';
 import AccountIdentifier from './screens/AccountIdentifier';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+const Toast = ({ message, type }) => {
+    if (!message) return null;
+    return (
+        <div style={{
+            position: 'fixed',
+            bottom: 'calc(var(--nav-h) + 20px)',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '12px 24px',
+            borderRadius: '14px',
+            backgroundColor: type === 'error' ? '#FEF2F2' : '#F0FDF4',
+            color: type === 'error' ? '#DC2626' : '#065F46',
+            border: `1px solid ${type === 'error' ? '#FECACA' : '#BBF7D0'}`,
+            fontSize: '14px',
+            fontWeight: 600,
+            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+            zIndex: 1000,
+            animation: 'slideUp 0.3s ease, fadeOut 0.3s ease 2.5s forwards',
+            maxWidth: '90%',
+            textAlign: 'center',
+            whiteSpace: 'nowrap'
+        }}>
+            {message}
+        </div>
+    );
+};
+
 const ScreenManager = () => {
-    const { currentScreen, isAuthenticated } = useContext(AppContext);
+    const { currentScreen, isAuthenticated, toast } = useContext(AppContext);
 
     const showNav = ['chat', 'guidance', 'dashboard', 'documents'].includes(currentScreen);
 
@@ -36,7 +63,7 @@ const ScreenManager = () => {
             case 'dashboard': return <Dashboard key="dashboard" />;
             case 'documents': return <Documents key="documents" />;
             case 'accounts': return <AccountIdentifier key="accounts" />;
-            default: return <Dashboard key="dashboard" />; // Default to dashboard if logged in
+            default: return <Dashboard key="dashboard" />;
         }
     };
 
@@ -46,12 +73,12 @@ const ScreenManager = () => {
                 {renderScreen()}
             </div>
             {showNav && <BottomNav />}
+            {toast && <Toast message={toast.message} type={toast.type} />}
         </>
     );
 };
 
 const App = () => {
-    // Note: User can replace this with a real Client ID in environment variables later
     const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || 'placeholder_client_id';
 
     return (

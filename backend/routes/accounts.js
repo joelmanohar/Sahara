@@ -58,6 +58,24 @@ router.post('/detect-text', async (req, res, next) => {
 });
 
 /**
+ * POST /api/accounts/decision-support
+ * Generate decision support guidance for detected accounts.
+ * Body: { accounts: [{type, name, note}], userProfile: {name, relationship} }
+ */
+router.post('/decision-support', async (req, res, next) => {
+    try {
+        const { accounts = [], userProfile = {} } = req.body;
+        if (!Array.isArray(accounts) || accounts.length === 0) {
+            return res.status(400).json({ error: 'Please provide accounts array.' });
+        }
+        const decisions = await accountDetectionService.generateDecisionSupport(accounts, userProfile);
+        res.json({ decisions });
+    } catch (err) {
+        next(err);
+    }
+});
+
+/**
  * PUT /api/accounts/:userId/merge
  * Merge detected/manual accounts into the user's profile (deduplicates by type+name).
  * Body: { accounts: [{ type, name, note, detectedBy }] }

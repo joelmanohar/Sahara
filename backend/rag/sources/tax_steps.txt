@@ -1,0 +1,108 @@
+Tax-Related Steps After Death (India — Income Tax):
+
+OVERVIEW:
+The deceased's tax obligations do not end with death. The legal representative (legal heir or executor of will) is responsible for filing the deceased's final income tax return and handling any tax-related matters.
+
+WHO IS RESPONSIBLE:
+- Legal Representative: The person who manages the deceased's estate
+- As per Section 159 of Income Tax Act: The legal representative is liable to pay taxes from the estate
+- Personal liability of legal representative is limited to the extent of assets received
+
+STEP 1: Register as Legal Representative on Income Tax Portal
+- Visit: https://www.incometax.gov.in/
+- Login using the legal representative's own PAN
+- Navigate to: "Authorize to Act as Representative Assessee" (under "My Account" or "Compliance")
+- File Form 2 to register as legal representative of the deceased
+- Submit: Death certificate, Legal Heir Certificate, PAN of deceased
+- Once approved, you can file returns on behalf of the deceased
+
+STEP 2: File Final Income Tax Return
+- File ITR for the period from April 1st to date of death
+- Income from all sources until date of death must be declared:
+  - Salary received
+  - Interest earned on FDs, savings accounts
+  - Rental income
+  - Capital gains (if any investments were sold)
+  - Business income (if applicable)
+- Due date: Same as regular ITR filing deadline (July 31 for individuals)
+- If TDS was deducted: Claim refund if applicable
+
+STEP 3: Income After Date of Death
+- Income earned AFTER the date of death belongs to the estate or legal heirs
+- If assets are not yet distributed: File return as "Estate of [Deceased Name]" through the legal representative
+- Once assets are distributed: Each heir files their own return including inherited income
+
+STEP 4: Pending Tax Demands
+- Check the income tax portal for any pending demands against the deceased
+- If legitimate: Pay from the estate
+- If incorrect: Respond/appeal through the portal as legal representative
+- Outstanding refunds: Will be credited to the bank account linked to deceased's PAN
+
+STEP 5: PAN Status Update
+- After all tax matters are settled, the deceased's PAN should be marked as "inactive"
+- Submit request to Jurisdictional Assessing Officer (JAO)
+- This prevents misuse of the PAN
+
+CAPITAL GAINS ON INHERITED ASSETS:
+- Inheritance itself is NOT taxable (there is no inheritance tax in India)
+- However, when the heir SELLS an inherited asset, capital gains tax applies
+- Cost of acquisition: The cost at which the deceased originally acquired the asset
+- Period of holding: Includes the deceased's period of holding
+- For property: Indexation benefit available for long-term capital gains
+
+SPECIFIC TAX SCENARIOS:
+
+Interest on FDs/Bank Accounts:
+- Interest accrued until date of death: Include in deceased's final return
+- Interest accrued after date of death: Include in heir's return (or estate return)
+- TDS certificates (Form 16A) can be obtained from the bank
+
+Mutual Funds / Shares:
+- No tax on transmission to nominee/heir
+- Tax arises only when the heir sells/redeems the units
+- Capital gains calculated from original purchase date and cost
+
+Life Insurance Proceeds:
+- EXEMPT from tax under Section 10(10D) — no tax filing required for this amount
+
+EPF/PPF Proceeds:
+- EPF received by nominee/heir: Generally tax-free (if member had 5+ years of service)
+- PPF maturity: Fully tax-exempt
+
+Pension:
+- Family pension received by spouse/heir: TAXABLE as "Income from other sources"
+- Standard deduction of ₹15,000 or 1/3rd of pension (whichever is lower) is available
+- Report under ITR-1 or ITR-2
+
+STEP 6: Clear All Pending Obligations
+- File any pending returns for previous years
+- Settle any outstanding self-assessment tax
+- Respond to any notices from the Income Tax Department
+- Maintain records for at least 7 years
+
+REQUIRED DOCUMENTS FOR TAX FILING:
+- Deceased's PAN card
+- Death certificate
+- Legal Heir Certificate
+- Form 16 / Form 16A (salary/TDS certificates)
+- Bank statements (for interest income)
+- Investment proofs (mutual funds, shares, FDs)
+- Property documents (if rental income was earned)
+- Previous year's ITR (for reference)
+
+IMPORTANT LINKS:
+- Income Tax Portal: https://www.incometax.gov.in/
+- e-Filing Help: https://www.incometax.gov.in/iec/foportal/help
+- PAN services: https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html
+- TDS certificates: Ask bank/employer or check Form 26AS on IT portal
+
+ESCALATION:
+- For errors in filing: Approach local Income Tax office (Jurisdictional AO)
+- For refund delays: File grievance at https://www.incometax.gov.in/iec/foportal/ (Grievance tab)
+- Chartered Accountant: Recommended for complex tax situations
+
+TIMELINE:
+- Register as legal representative: 1-2 weeks
+- File final return: Before July 31 of the assessment year (or within time limit for belated return)
+- Process refunds: 3-6 months after filing
+- Settle demands: Within 30 days of receiving notice

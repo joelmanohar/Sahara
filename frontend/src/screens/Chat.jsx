@@ -5,10 +5,16 @@ import RagBar from '../components/RagBar';
 import { ArrowLeft, Send } from 'lucide-react';
 import { sendChat, getChatHistory } from '../services/api';
 
+const ONBOARDING_MESSAGE = `Hello. I'm here to support you through this difficult time. 🕊️
+
+I can help you navigate the administrative and legal steps that follow the loss of a loved one — from obtaining the death certificate to managing bank accounts, insurance claims, property, pension, and more.
+
+Would you like to share what situation brought you here so I can guide you better? You can also choose from the options below to get started.`;
+
 const Chat = () => {
-    const { navigate, accounts, history, setHistory, userId, busy, setBusy } = useContext(AppContext);
+    const { navigate, accounts, history, setHistory, userId, busy, setBusy, addTask, userName } = useContext(AppContext);
     const [inputVal, setInputVal] = useState('');
-    const [showQuick, setShowQuick] = useState(history.length === 0);
+    const [addedTasks, setAddedTasks] = useState(new Set());
     const scrollRef = useRef(null);
 
     // Initial load of chat history
@@ -18,9 +24,6 @@ const Chat = () => {
                 .then(res => {
                     const loadedHistory = res.data || [];
                     setHistory(loadedHistory);
-                    if (loadedHistory.length > 0) {
-                        setShowQuick(false);
-                    }
                 })
                 .catch(err => console.error("Failed to load chat history", err));
         }
@@ -36,7 +39,6 @@ const Chat = () => {
     const handleSend = async (text) => {
         if (!text.trim() || busy) return;
 
-        setShowQuick(false);
         setBusy(true);
         setInputVal('');
 
@@ -47,7 +49,7 @@ const Chat = () => {
         try {
             const res = await sendChat({
                 message: text,
-                history: history, // Send original history, backend will append the new message
+                history: history,
                 userId,
                 accounts
             });
@@ -56,7 +58,10 @@ const Chat = () => {
                 role: 'assistant',
                 content: res.data.reply,
                 sources: res.data.sources,
-                showDocCTA: res.data.showDocCTA
+                showDocCTA: res.data.showDocCTA,
+                taskSuggestions: res.data.taskSuggestions || [],
+                officialLinks: res.data.officialLinks || [],
+                hasRagData: res.data.hasRagData
             };
 
             setHistory([...updatedHistory, aiReply]);
@@ -64,11 +69,29 @@ const Chat = () => {
             console.error(err);
             setHistory([
                 ...updatedHistory,
-                { role: 'assistant', content: 'Connection failed. Please try again.' }
+                {
+                    role: 'assistant',
+                    content: 'I apologize, but I\'m having trouble connecting right now. Please try again in a moment. If this persists, check your internet connection.',
+                }
             ]);
         } finally {
             setBusy(false);
         }
+    };
+
+    const handleAddTask = async (task) => {
+        const taskKey = task.name;
+        if (addedTasks.has(taskKey)) return;
+
+        await addTask({
+            name: task.name,
+            category: task.category || 'general',
+            priority: task.priority || 'normal',
+            deadline: task.deadline || '',
+            source: 'chat',
+            sub: `Priority: ${task.priority || 'normal'}${task.deadline ? ' · ' + task.deadline : ''}`
+        });
+        setAddedTasks(prev => new Set([...prev, taskKey]));
     };
 
     const handleKeyDown = (e) => {
@@ -91,7 +114,7 @@ const Chat = () => {
                 backgroundColor: '#fff',
                 display: 'flex', alignItems: 'center', gap: '12px'
             }}>
-                <button onClick={() => navigate('setup')} style={{ padding: '8px' }}>
+                <button onClick={() => navigate('dashboard')} style={{ padding: '8px' }}>
                     <ArrowLeft size={24} color="var(--deep-teal)" />
                 </button>
 
@@ -124,22 +147,25 @@ const Chat = () => {
 
             {/* Chat feed */}
             <div ref={scrollRef} className="scroll-container" style={{
-                flex: 1, padding: '14px 16px 20px', // Removed arbitrary large padding
+                flex: 1, padding: '14px 16px 20px',
                 display: 'flex', flexDirection: 'column', gap: '12px',
-                overflowY: 'auto' // Added explicit scrolling constraint
+                overflowY: 'auto'
             }}>
 
+                {/* Empathetic Welcome Message */}
                 {history.length === 0 && (
                     <div style={{
                         alignSelf: 'flex-start',
                         backgroundColor: '#fff', padding: '16px',
                         borderRadius: '16px', borderBottomLeftRadius: '4px',
                         boxShadow: 'var(--shadow-sm)', maxWidth: '85%',
-                        fontSize: '15px', lineHeight: 1.5, color: 'var(--text-dark)'
+                        fontSize: '15px', lineHeight: 1.6, color: 'var(--text-dark)',
+                        whiteSpace: 'pre-wrap'
                     }}>
-                        Namaste 🙏 I'm here to help you navigate what lies ahead. Based on your details, I can guide you through {accounts.join(', ').toLowerCase()} closures and claims.
-                        <br /><br />
-                        Where would you like to start?
+                        {userName
+                            ? ONBOARDING_MESSAGE.replace('Hello.', `Hello ${userName}.`)
+                            : ONBOARDING_MESSAGE
+                        }
                     </div>
                 )}
 
@@ -149,6 +175,9 @@ const Chat = () => {
                             role={msg.role}
                             content={msg.content}
                             showSource={msg.sources && msg.sources.length > 0}
+                            officialLinks={msg.officialLinks}
+                            taskSuggestions={msg.taskSuggestions?.filter(t => !addedTasks.has(t.name))}
+                            onAddTask={handleAddTask}
                         />
                         {msg.showDocCTA && (
                             <div style={{ alignSelf: 'flex-start', marginTop: '4px' }}>
@@ -163,6 +192,24 @@ const Chat = () => {
                                 >
                                     📝 Open Documents
                                 </button>
+                            </div>
+                        )}
+
+                        {/* RAG confidence indicator */}
+                        {msg.role === 'assistant' && msg.hasRagData === false && (
+                            <div style={{
+                                alignSelf: 'flex-start',
+                                padding: '6px 12px',
+                                backgroundColor: '#FFF8E1',
+                                border: '1px solid #FFE082',
+                                borderRadius: '10px',
+                                fontSize: '12px',
+                                color: '#F57F17',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px'
+                            }}>
+                                ⚠️ General guidance — please verify with official sources
                             </div>
                         )}
                     </React.Fragment>
@@ -186,41 +233,17 @@ const Chat = () => {
 
             {/* Input Area */}
             <div style={{
-                // Changed from absolute to standard block level element in the flex column
                 backgroundColor: '#fff', borderTop: '1px solid var(--border)',
                 padding: '12px 16px', zIndex: 10,
-                paddingBottom: 'calc(var(--nav-h) + 12px)' // padding for bottom nav space
+                paddingBottom: 'calc(var(--nav-h) + 12px)'
             }}>
-
-                {showQuick && accounts.length > 0 && (
-                    <div className="scroll-container" style={{
-                        display: 'flex', gap: '8px', marginBottom: '12px', overflowX: 'auto', whiteSpace: 'nowrap'
-                    }}>
-                        {accounts.slice(0, 3).map(acc => (
-                            <button
-                                key={acc}
-                                onClick={() => handleSend(`${acc} guidance`)}
-                                style={{
-                                    padding: '8px 16px',
-                                    border: '1px solid var(--soft-teal)',
-                                    color: 'var(--soft-teal)',
-                                    borderRadius: '20px',
-                                    backgroundColor: '#fff',
-                                    fontSize: '13px', fontWeight: 500
-                                }}
-                            >
-                                {acc}
-                            </button>
-                        ))}
-                    </div>
-                )}
 
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
                     <textarea
                         value={inputVal}
                         onChange={e => setInputVal(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder="Ask anything..."
+                        placeholder="Ask anything about the process..."
                         disabled={busy}
                         style={{
                             flex: 1, backgroundColor: 'var(--warm-white)',

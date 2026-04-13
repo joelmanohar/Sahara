@@ -35,21 +35,24 @@ async function ingest() {
             continue;
         }
 
+        // Derive a topic/category tag from the filename for better retrieval
+        const topic = file.replace(/\.txt$|\.pdf$/i, '').replace(/_/g, ' ');
+
         // Chunk text by paragraphs roughly
         const paragraphs = text.split(/\n\s*\n/);
         let currentChunk = '';
 
         for (const p of paragraphs) {
-            if ((currentChunk.length + p.length) > 1500) {
-                allChunks.push({ text: currentChunk.trim(), source: file });
-                // rudimentary overlap
+            if ((currentChunk.length + p.length) > 1200) {
+                allChunks.push({ text: currentChunk.trim(), source: file, topic });
+                // rudimentary overlap — keep last paragraph for context
                 currentChunk = p;
             } else {
                 currentChunk += '\n\n' + p;
             }
         }
         if (currentChunk.trim()) {
-            allChunks.push({ text: currentChunk.trim(), source: file });
+            allChunks.push({ text: currentChunk.trim(), source: file, topic });
         }
     }
 
@@ -58,14 +61,20 @@ async function ingest() {
         return;
     }
 
-    console.log(`Embedding ${allChunks.length} chunks...`);
+    console.log(`Embedding ${allChunks.length} chunks from ${files.length} source files...`);
     const vectors = [];
     for (let i = 0; i < allChunks.length; i++) {
+        if (i % 10 === 0) console.log(`  Embedding chunk ${i + 1}/${allChunks.length}...`);
         const vec = await embeddingService.embed(allChunks[i].text);
         vectors.push(vec);
+        // Small delay to avoid rate limiting on embedding API
+        if (i > 0 && i % 20 === 0) await new Promise(r => setTimeout(r, 500));
     }
 
-    const d = 1536; // OpenAI text-embedding-3-small dimension
+    // Detect dimension from first vector
+    const d = vectors[0].length;
+    console.log(`Detected embedding dimension: ${d}`);
+
     const index = new faiss.IndexFlatL2(d);
 
     // faiss-node Index.add expects a flat JS array of length n * d.
@@ -83,14 +92,15 @@ async function ingest() {
     }
 
     // debug: verify lengths
-    console.log('faiss ingest: adding', n, 'vectors. expected dim:', d);
+    console.log('faiss ingest: adding', n, 'vectors. dimension:', d);
     console.log('faiss ingest: flat length:', flat.length);
     index.add(flat);
 
     index.write(path.join(indexDir, 'faiss.index'));
     fs.writeFileSync(path.join(indexDir, 'chunks.json'), JSON.stringify(allChunks, null, 2));
 
-    console.log('Ingestion complete. FAISS index created.');
+    console.log(`\n✅ Ingestion complete. FAISS index created with ${n} chunks (dim=${d}).`);
+    console.log(`   Sources: ${[...new Set(allChunks.map(c => c.source))].join(', ')}`);
 }
 
 ingest().catch(console.error);

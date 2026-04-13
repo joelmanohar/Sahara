@@ -24,7 +24,7 @@ const Login = () => {
         try {
             const res = await loginUser({ email, password });
             login(res.data.token, res.data.user);
-            navigate('dashboard');
+            navigate('setup');
         } catch (err) {
             setError(err.response?.data?.error || 'Login failed. Please check your credentials.');
         } finally {
@@ -38,7 +38,7 @@ const Login = () => {
         try {
             const res = await googleLoginUser({ credential: credentialResponse.credential });
             login(res.data.token, res.data.user);
-            navigate('dashboard');
+            navigate('setup');
         } catch (err) {
             setError(err.response?.data?.error || 'Google login failed.');
         } finally {

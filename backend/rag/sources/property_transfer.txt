@@ -1,0 +1,106 @@
+Property Transfer After Death (India):
+
+OVERVIEW:
+Transferring property (immovable assets) after death is one of the most complex post-death processes. It involves mutation of land/property records, which is handled by the Revenue Department or Municipal Corporation.
+
+TYPES OF PROPERTY:
+1. Self-acquired property: Governed by the will (if exists) or succession laws
+2. Ancestral property: Governed by Hindu Succession Act or applicable personal law
+3. Joint property: Survivorship rights may apply (depends on form of ownership)
+
+SCENARIO A: With a Valid Will
+STEP 1: Obtain Probate of Will (mandatory in Mumbai, Kolkata, Chennai; optional elsewhere)
+  - File petition in District Court
+  - Submit: Original will, death certificate, list of heirs, court fee
+  - Timeline: 3-12 months
+STEP 2: Apply for Mutation at local Revenue/Municipal office
+STEP 3: Submit documents (see checklist below)
+STEP 4: Mutation recorded in property records
+- Link: State Revenue Department portal
+
+SCENARIO B: Without a Will (Intestate Succession)
+STEP 1: Obtain Legal Heir Certificate or Succession Certificate
+STEP 2: If multiple heirs exist and one wants sole ownership: Execute a Release Deed or Family Settlement Deed
+STEP 3: Apply for Mutation at local Revenue/Municipal office
+STEP 4: Submit documents (see checklist below)
+STEP 5: Mutation recorded
+
+STEP-BY-STEP MUTATION PROCESS:
+STEP 1: Collect all property documents
+  - Sale deed / title deed
+  - Previous mutation records
+  - Property tax receipts
+  - Encumbrance certificate (from Sub-Registrar office)
+
+STEP 2: Apply for Mutation
+  - Urban property: Apply at Municipal Corporation / Nagar Palika
+  - Rural property: Apply at Tehsildar / Revenue office
+  - Online portals available in many states:
+    - Maharashtra: https://mahabhulekh.maharashtra.gov.in/
+    - Karnataka: https://landrecords.karnataka.gov.in/
+    - Uttar Pradesh: https://upbhulekh.gov.in/
+    - Tamil Nadu: https://eservices.tn.gov.in/
+
+STEP 3: Submit Required Documents
+  - Application form for mutation
+  - Death certificate (certified copy)
+  - Legal Heir Certificate / Succession Certificate / Probate
+  - Original sale deed / title deed (for verification)
+  - Property tax paid receipts (latest)
+  - Encumbrance certificate (last 13-30 years)
+  - NOC from other legal heirs (if applicable)
+  - Release Deed / Family Settlement (if applicable)
+  - Identity proof of applicant (Aadhaar + PAN)
+  - Two passport-size photos
+
+STEP 4: Verification
+  - Revenue inspector may conduct field inspection
+  - Notice may be published for objections (15-30 days)
+  - Hearing scheduled if objections are raised
+
+STEP 5: Mutation Order
+  - Revenue officer passes mutation order
+  - Property records updated in the name of legal heir(s)
+  - Get certified copy of mutation record
+
+ADDITIONAL STEPS:
+- Update property tax records at Municipal Corporation
+- Update electricity/water connection names
+- Update Aadhaar address (if moving into property)
+- Register the property transfer at Sub-Registrar office (stamp duty may apply)
+
+STAMP DUTY AND REGISTRATION:
+- Mutation by succession: Reduced stamp duty in most states
+- Some states exempt stamp duty for transfers to spouse/children by succession
+- Registration at Sub-Registrar: Typically needed for updating the sale deed
+- Check state-specific stamp duty rates
+
+HOUSING SOCIETY (Apartments):
+- Inform the Housing Society in writing with death certificate
+- Apply for transfer of share certificate
+- Submit: Death certificate, Legal Heir Certificate, NOC from other heirs
+- Society may charge a nominal transfer fee
+- Update maintenance billing name
+
+AGRICULTURAL LAND:
+- Special rules apply in many states
+- Some states restrict transfer to non-agriculturists
+- Revenue records (7/12 extract in Maharashtra, Khata in Karnataka) must be updated
+- Approach Tehsildar office
+
+DISPUTES AND LITIGATION:
+- If heirs disagree: Mediation recommended first
+- If mediation fails: Civil suit for partition
+- If illegal possession by others: File suit for possession in Civil Court
+- Legal aid available for economically weaker sections
+
+TIMELINE SUMMARY:
+- Document collection: 2-4 weeks
+- Legal Heir / Succession Certificate: 2 weeks to 6 months
+- Mutation application & processing: 1-3 months
+- Total: 3-9 months (varies significantly by state and complexity)
+
+IMPORTANT NOTE:
+- Property mutation does NOT transfer ownership by itself. It is an update of revenue records.
+- Legal ownership transfer happens through Will/Succession, not mutation.
+- Always consult a local property lawyer for specific cases.

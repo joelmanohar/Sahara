@@ -14,8 +14,19 @@ export const sendChat = (data) => axios.post(`${BASE}/chat`, data);
 
 export const getTasks = (userId) => axios.get(`${BASE}/tasks/${userId}`);
 
-export const updateTask = (userId, taskIndex, status, notes) =>
-    axios.put(`${BASE}/tasks/${userId}`, { taskIndex, status, notes });
+export const createTask = (userId, taskData) =>
+    axios.post(`${BASE}/tasks/${userId}`, taskData);
+
+export const updateTask = (userId, taskIndex, data) =>
+    axios.put(`${BASE}/tasks/${userId}`, { taskIndex, ...data });
+
+export const deleteTask = (userId, taskIndex) =>
+    axios.delete(`${BASE}/tasks/${userId}/${taskIndex}`);
+
+export const getGuidanceTopic = (topicId) =>
+    axios.get(`${BASE}/guidance/topic/${topicId}`);
+
+
 
 export const generateDocument = (type, userData) =>
     axios.post(`${BASE}/documents/generate`, { type, ...userData }, { responseType: 'blob' });
@@ -31,9 +42,11 @@ export const detectAccountsFromDocument = (formData) =>
 export const detectAccountsFromText = (data) =>
     axios.post(`${BASE}/accounts/detect-text`, data);
 
+export const getDecisionSupport = (accounts, userProfile) =>
+    axios.post(`${BASE}/accounts/decision-support`, { accounts, userProfile });
+
 export const mergeAccounts = (userId, accounts) =>
     axios.put(`${BASE}/accounts/${userId}/merge`, { accounts });
 
 export const getUserAccounts = (userId) =>
     axios.get(`${BASE}/accounts/${userId}`);
-

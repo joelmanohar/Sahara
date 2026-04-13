@@ -1,0 +1,66 @@
+Death Certificate Process (India):
+
+OVERVIEW:
+A death certificate is the most critical document required for all post-death administrative tasks. It is legally required for bank claims, insurance, property transfer, pension, and government benefits. Without it, almost no financial or legal process can begin.
+
+STEP 1: Obtain Medical Certificate of Cause of Death (MCCD)
+- If death occurred in a hospital: The attending doctor issues the MCCD automatically.
+- If death occurred at home: Call the local municipal authority or nearest government hospital. A registered medical practitioner must certify the cause of death.
+- If death occurred due to accident/unnatural causes: File an FIR with the police. The police will arrange post-mortem, and the hospital will issue the MCCD after post-mortem.
+- Required: Identity proof of deceased, hospital records (if any)
+- Timeline: Usually same day or next day
+
+STEP 2: Register the Death
+- Registration must be done within 21 days of death at the local municipal corporation / gram panchayat office.
+- Late registration (after 21 days but within 30 days): Allowed with a late fee.
+- Late registration (after 30 days): Requires a Magistrate's order.
+- WHO registers: The head of the household, nearest relative, or hospital authority (if institutional death).
+- Portal for online registration (varies by state):
+  - Delhi: https://edistrict.delhigovt.nic.in/
+  - Maharashtra: https://aaplesarkar.mahaonline.gov.in/
+  - Karnataka: https://kaveri2.karnataka.gov.in/
+  - Tamil Nadu: https://cnr.tn.gov.in/
+  - General: Check your state's e-District portal
+
+STEP 3: Required Documents for Registration
+- MCCD (Medical Certificate of Cause of Death)
+- Proof of identity of deceased (Aadhaar, Voter ID, Passport)
+- Proof of identity of informant/applicant
+- Proof of address of place of death
+- Hospital discharge summary (if applicable)
+- FIR copy (if unnatural death)
+
+STEP 4: Obtain Death Certificate
+- After registration, the Registrar issues the Death Certificate.
+- Processing time: 7-15 working days (varies by state and municipality)
+- Collect multiple certified copies (at least 8-10 copies recommended)
+- Each copy may cost ₹10-50 depending on the state
+- Online application available in many states through e-District portals
+
+STEP 5: Certified Copies
+- Get at least 8-10 certified copies — you will need them for:
+  - Each bank account claim
+  - Insurance claims
+  - EPF/PF withdrawal
+  - Property mutation
+  - Pension claims
+  - Utility account closure
+  - Vehicle transfer
+  - Court proceedings (if any)
+
+IMPORTANT NOTES:
+- If the death occurred abroad: The Indian Embassy/Consulate will assist. The foreign death certificate must be apostilled and translated.
+- If no MCCD is available: A declaration by the head of the family and two witnesses may be accepted in some states.
+- Keep the original death certificate safe. Always submit certified copies, not the original.
+- Some institutions accept self-attested photocopies; others require notarized or gazetted officer-attested copies.
+
+ESCALATION:
+- If the municipal office delays beyond 30 days: File an RTI application or approach the District Registrar.
+- For grievances: Contact the Chief Registrar of Births and Deaths in your state.
+- Online grievance portals are available in most states.
+
+TIMELINE SUMMARY:
+- MCCD: 1-2 days
+- Registration: Within 21 days (free), 21-30 days (with fee), after 30 days (Magistrate order)
+- Death Certificate issuance: 7-15 working days after registration
+- Recommended: Start within 3-5 days of death

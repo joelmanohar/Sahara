@@ -37,7 +37,7 @@ const Documents = () => {
         setErrors(errs);
         if (Object.keys(errs).length > 0) return;
 
-    const payload = { userName, relationship, state: userState || 'Maharashtra', ...fields };
+        const payload = { userName, relationship, state: userState || 'Maharashtra', ...fields };
 
         // save to session context for reuse
         setDocFields(prev => ({ ...prev, [selectedType]: fields }));
@@ -85,7 +85,7 @@ const Documents = () => {
 
     const renderPreview = (type, data) => {
         // Lightweight HTML preview renderer that mirrors template text
-    const { userName, relationship, deceasedName, accountNumber, dematAccountNo, policyNumber, UAN, IFSC, bankName } = data;
+        const { userName, relationship, deceasedName, accountNumber, dematAccountNo, policyNumber, UAN, IFSC, bankName } = data;
         if (type === 'transmission') {
             return (
                 <div>
@@ -202,8 +202,8 @@ const Documents = () => {
                             <h3 style={{ marginTop: 0 }}>{selectedType === 'lic' ? 'LIC Claim Details' : selectedType === 'epf' ? 'EPF Details' : selectedType === 'transmission' ? 'Demat Transmission Details' : 'Account Closure Details'}</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                 <label style={{ fontSize: 13 }}>Deceased / Account Holder Name</label>
-                                        <input value={fields.deceasedName || ''} onChange={e => setFields(f => ({ ...f, deceasedName: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
-                                        {errors.deceasedName && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.deceasedName}</div>}
+                                <input value={fields.deceasedName || ''} onChange={e => setFields(f => ({ ...f, deceasedName: e.target.value }))} style={{ padding: '8px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                                {errors.deceasedName && <div style={{ color: 'crimson', fontSize: 12 }}>{errors.deceasedName}</div>}
 
                                 {(selectedType === 'transmission') && (
                                     <>

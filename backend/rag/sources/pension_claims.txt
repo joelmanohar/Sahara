@@ -1,0 +1,114 @@
+Pension Claims After Death (India):
+
+OVERVIEW:
+When a pensioner passes away, the spouse and dependents may be eligible for family pension. The process varies based on whether the deceased was a government employee, private sector employee (EPS/NPS), or a military/defense personnel.
+
+TYPE 1: GOVERNMENT PENSION (Central/State Government Employees)
+
+FAMILY PENSION ELIGIBILITY:
+- Spouse (widow/widower) — until death or remarriage
+- Unmarried/divorced/widowed daughters — until marriage/remarriage or employment
+- Sons — until age 25 or employment
+- Disabled children — for lifetime
+
+STEP 1: Inform the Pension Disbursing Authority
+  - For Central Govt: Treasury Office / Bank branch where pension is credited
+  - For State Govt: State Treasury / Directorate of Pensions
+
+STEP 2: Submit Required Documents
+  - Death certificate (certified copy)
+  - PPO (Pension Payment Order) number
+  - Family pension application form
+  - Spouse/dependent's identity proof (Aadhaar + PAN)
+  - Spouse/dependent's bank account details
+  - Marriage certificate (for spouse)
+  - Birth certificate of dependent children (if applicable)
+  - Joint photo of deceased and spouse (if available)
+  - Life certificate (Jeevan Pramaan) of the claimant
+
+STEP 3: Apply for Family Pension
+  - Central Govt: Through CPAO (Central Pension Accounting Office)
+    Link: https://cpao.nic.in/
+  - Defence: Through PCDA (Principal Controller of Defence Accounts)
+    Link: https://pcdapension.nic.in/
+  - State Govt: Through respective State Pension Department
+  - CCS (Pension) Rules, 2021 applicable for Central Govt
+    Link: https://doppw.gov.in/
+
+STEP 4: Processing
+  - Family pension should commence from the day after the pensioner's death
+  - Enhanced family pension: 50% of last pay for first 7 years or up to age 67, whichever is earlier
+  - Normal family pension: 30% of last pay thereafter
+  - Timeline: 1-3 months for processing
+
+STEP 5: Arrears and Gratuity
+  - Any pending pension arrears will be paid to the family
+  - Death Gratuity: Payable if death occurs while in service (up to 16.5 times of pay, max ₹20 lakh)
+
+TYPE 2: EPS PENSION (Employees' Pension Scheme — Private Sector)
+
+ELIGIBILITY:
+- Spouse and up to 2 children of deceased EPF member
+- Member must have completed at least 10 years of service
+
+FAMILY PENSION:
+- Widow pension: Based on service length and average salary
+- Children's pension: Additional 25% of widow pension per child (max 2)
+- Orphan pension: 75% of widow pension per child
+
+STEP 1: Submit Form 10D to EPFO
+  - Download: https://www.epfindia.gov.in/site_en/Forms.php
+STEP 2: Required Documents:
+  - Form 10D (duly filled)
+  - Death certificate
+  - Marriage certificate
+  - Spouse's Aadhaar and bank details
+  - UAN of deceased member
+  - Employer attestation (if available)
+STEP 3: Submit to regional EPFO office or online via member portal
+STEP 4: Processing: 20-30 working days
+  Link: https://unifiedportal-mem.epfindia.gov.in/
+
+TYPE 3: NPS (National Pension System)
+
+IF SUBSCRIBER DIES BEFORE RETIREMENT:
+- Entire accumulated corpus paid to nominee/legal heir as lump sum
+- No mandatory annuity purchase required
+
+IF SUBSCRIBER DIES AFTER RETIREMENT:
+- Depends on annuity type chosen:
+  - If "Return of Purchase Price" annuity: Lump sum returned to nominee
+  - If "Joint Life" annuity: Pension continues to spouse
+
+STEP 1: Nominee/heir submits claim to NPS Point of Presence (POP)
+  - Or through employer (for government NPS subscribers)
+STEP 2: Documents:
+  - Death certificate
+  - PRAN (Permanent Retirement Account Number) card
+  - Nominee's/heir's KYC
+  - Bank account details
+STEP 3: CRA (Central Recordkeeping Agency) processes the claim
+  Link: https://www.npscra.nsdl.co.in/
+  NSDL CRA: https://cra-nsdl.com/
+STEP 4: Processing: 15-30 working days
+
+TYPE 4: MILITARY / DEFENCE PENSION
+
+- Contact Unit Record Office or Zila Sainik Board
+- Family pension under CCS (Pension) Rules or Defence Pension Rules
+- Additional benefits: Canteen facilities, medical coverage (ECHS)
+- ECHS: https://echs.gov.in/
+- SPARSH Portal: https://sparsh.defencepension.gov.in/
+
+IMPORTANT NOTES:
+- Family pension is a RIGHT, not a favor. Do not accept delays.
+- If pension is credited to joint bank account with survivor mode: Pension continues automatically until the bank is informed about the death. Inform promptly to avoid recovery.
+- Jeevan Pramaan (Digital Life Certificate) can be submitted online: https://jeevanpramaan.gov.in/
+- Commuted portion of pension stands restored after 15 years from commutation.
+
+ESCALATION:
+- Central Govt: Department of Pension & Pensioners' Welfare
+  Helpline: 1800-11-1960
+  Link: https://doppw.gov.in/
+- Pensioners' Grievance: https://pgportal.gov.in/
+- If bank delays family pension payment: Approach bank nodal officer or Banking Ombudsman

@@ -1,4 +1,9 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
+import {
+    createTask as apiCreateTask,
+    updateTask as apiUpdateTask,
+    deleteTask as apiDeleteTask
+} from '../services/api';
 
 export const AppContext = createContext();
 
@@ -17,6 +22,7 @@ export const AppProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [busy, setBusy] = useState(false);
+    const [toast, setToast] = useState(null);
     const [docFields, setDocFields] = useState(() => {
         try {
             const raw = localStorage.getItem('docFields');
@@ -68,8 +74,65 @@ export const AppProvider = ({ children }) => {
         setUserName('');
         setUserEmail('');
         setIsAuthenticated(false);
+        setHistory([]);
+        setTasks([]);
         navigate('onboarding');
     };
+
+    // Show a toast notification
+    const showToast = useCallback((message, type = 'success', duration = 3000) => {
+        setToast({ message, type });
+        setTimeout(() => setToast(null), duration);
+    }, []);
+
+    // Create a task
+    const addTask = useCallback(async (taskData) => {
+        if (!userId) return;
+        try {
+            const res = await apiCreateTask(userId, taskData);
+            if (res.data && res.data.tasks) {
+                setTasks(res.data.tasks);
+            }
+            showToast(`✅ "${taskData.name}" added`);
+            return res.data;
+        } catch (err) {
+            console.error('Failed to add task:', err);
+            showToast('❌ Failed to add task', 'error');
+            return null;
+        }
+    }, [userId, showToast]);
+
+    // Update a task
+    const updateTask = useCallback(async (taskIndex, taskData) => {
+        if (!userId) return;
+        try {
+            const res = await apiUpdateTask(userId, taskIndex, taskData);
+            setTasks(res.data);
+            showToast('✅ Task updated');
+            return res.data;
+        } catch (err) {
+            console.error('Failed to update task:', err);
+            showToast('❌ Failed to update task', 'error');
+            return null;
+        }
+    }, [userId, showToast]);
+
+    // Delete a task
+    const deleteTask = useCallback(async (taskIndex) => {
+        if (!userId) return;
+        try {
+            const res = await apiDeleteTask(userId, taskIndex);
+            if (res.data && res.data.tasks) {
+                setTasks(res.data.tasks);
+            }
+            showToast('🗑️ Task removed');
+            return res.data;
+        } catch (err) {
+            console.error('Failed to delete task:', err);
+            showToast('❌ Failed to delete task', 'error');
+            return null;
+        }
+    }, [userId, showToast]);
 
     return (
         <AppContext.Provider
@@ -90,9 +153,14 @@ export const AppProvider = ({ children }) => {
                 login, logout,
                 busy, setBusy,
                 navigate,
+                toast, showToast,
+                addTask,
+                updateTask,
+                deleteTask,
             }}
         >
             {children}
         </AppContext.Provider>
     );
 };
+
