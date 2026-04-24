@@ -45,10 +45,3 @@ A text analysis pipeline designed to scan pasted communications (SMS, Emails) or
 
 ### 5. 📖 Procedural Guidance Engine (`guidanceService.js`)
 A structured fallback module ensuring high data-integrity. It provides users with static, verified checklists containing exact Timelines, Required Documents, and Escalation Rights (e.g., Banking Ombudsman) for over a dozen common administrative scenarios.
-
----
-
-## 🚀 Optimization & Quota Management
-The application is highly tuned to operate efficiently within restrictive API limits (e.g., the Google 20-Request Free Tier limit).
-* **Local Fallback Systems:** High-frequency interactions (like UI navigation and initial text embedding) are executed using local deterministic logic to heavily preserve external AI API quotas for complex chat responses. 
-* **Static Caching:** Direct procedural pathways bypass the LLM and serve verified HTML/Markdown checklists directly to the frontend.

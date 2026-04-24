@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001'] }));
+app.use(cors({ origin: '*' })); // Allow all origins to seamlessly support Render dynamic domains
 app.use(express.json());
 
 // DB Connection — skip if URI still has placeholder credentials
