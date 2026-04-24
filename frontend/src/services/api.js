@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_DOMAIN = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+const isLocal = window.location.hostname === 'localhost';
+const API_DOMAIN = process.env.REACT_APP_API_URL || (isLocal ? 'http://localhost:5001' : 'https://sahara-backend-288i.onrender.com');
 const BASE = `${API_DOMAIN}/api`;
 
 // Auth
